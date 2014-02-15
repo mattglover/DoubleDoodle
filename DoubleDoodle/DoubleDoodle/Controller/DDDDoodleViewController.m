@@ -9,9 +9,9 @@
 #import "DDDDoodleViewController.h"
 #import "DDDDoodleView.h"
 
-static CGFloat const kDoodleViewInsetX = 10.0f;
-static CGFloat const kDoodleViewInsetY = 40.0f;
-static CGFloat const kDoodleViewOriginPositionY = 10.0f;
+static CGFloat const kDoodleViewFrameInsetX = 10.0f;
+static CGFloat const kDoodleViewFrameInsetY = 70.0f;
+static CGFloat const kDoodleViewOriginPositionY = 20.0f + 44.0f + 10.0f;
 
 @interface DDDDoodleViewController ()
 
@@ -46,21 +46,34 @@ static CGFloat const kDoodleViewOriginPositionY = 10.0f;
 - (void)viewDidLoad {
   [super viewDidLoad];
   
+  [self setupBackground];
+  
   UIColor *backgroundColor = [UIColor blackColor];
   UIColor *lineStrokeColor = [UIColor whiteColor];
   [self setupDoodleViewWithBackgroundColor:backgroundColor lineStrokeColor:lineStrokeColor];
 }
 
 #pragma mark - Setup
+- (void)setupBackground {
+  self.view.backgroundColor = [UIColor yellowColor];
+}
+
 - (void)setupDoodleViewWithBackgroundColor:(UIColor *)backgroundColor lineStrokeColor:(UIColor *)lineStrokeColor {
- 
-  CGRect entireViewBounds = self.view.bounds;
-  CGRect doodleViewFrame = CGRectInset(entireViewBounds, kDoodleViewInsetX, kDoodleViewInsetY);
-  doodleViewFrame.origin.y = kDoodleViewOriginPositionY;
-  self.doodleView = [[DDDDoodleView alloc] initWithFrame:doodleViewFrame];
+
+  self.doodleView = [[DDDDoodleView alloc] initWithFrame:[self doodleViewFrame]];
+  [self.doodleView setBackgroundColor:backgroundColor];
+  [self.doodleView setLineColor:lineStrokeColor];
   
   [self.view addSubview:self.doodleView];
 }
 
+#pragma mark - Private Helper Methods - Frame/Rect
+- (CGRect)doodleViewFrame {
+  CGRect entireViewBounds = self.view.bounds;
+  CGRect doodleViewFrame = CGRectInset(entireViewBounds, kDoodleViewFrameInsetX, kDoodleViewFrameInsetY);
+  doodleViewFrame.origin.y = kDoodleViewOriginPositionY;
+  
+  return doodleViewFrame;
+}
 
 @end
