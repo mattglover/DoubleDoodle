@@ -11,11 +11,12 @@
 @implementation UIImage (UIViews)
 
 + (UIImage *)imageWithView:(UIView *)view {
-  UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, 0.0);
+
+  CGFloat scale = [UIScreen mainScreen].scale;
+  
+  UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, scale);
   [view.layer renderInContext:UIGraphicsGetCurrentContext()];
-  
-  UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
-  
+  UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
   UIGraphicsEndImageContext();
   
   return img;

@@ -20,6 +20,8 @@
 @property (nonatomic, strong) DDDDoodleView *doodleView;
 
 - (id)initWithXML:(NSString *)xml withDelegate:(id<DDDDoodleViewControllerDelegate>)delegate;
+
+// Useful for deciding if Doodle View is not the currently editable DoodleView
 - (BOOL)isDoodleViewTransformed;
 
 @end

@@ -27,6 +27,8 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
 @property (nonatomic, strong) DDDDoodleViewController *firstDoodleViewController;
 @property (nonatomic, strong) DDDDoodleViewController *secondDoodleViewController;
 
+@property (nonatomic, strong) UIBarButtonItem *savePhotoButton;
+
 @property (nonatomic, assign) BOOL transitionInProgress;
 
 @end
@@ -52,11 +54,11 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
 - (void)viewDidLoad {
   [super viewDidLoad];
   
-  self.view.backgroundColor = [UIColor redColor];
+  self.view.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
   
   [self setupChildDoodleViewControllers];
   [self setupTransitionButtons];
-  [self setupSavePhotoButton];
+  [self presentSavePhotoButtonAnimated:NO];
 }
 
 #pragma mark - Setup
@@ -73,7 +75,11 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
   [self addChildViewController:self.secondDoodleViewController];
   
   // Apply a transform to the views
-  [self performTransition:TransitionTypeCircle frontView:self.firstDoodleViewController.doodleView backView:self.secondDoodleViewController.doodleView animated:NO completion:^(BOOL finished) {
+  [self performTransition:TransitionTypeCircle
+                frontView:self.firstDoodleViewController.doodleView
+                 backView:self.secondDoodleViewController.doodleView
+                 animated:NO
+               completion:^(BOOL finished) {
     self.transitionInProgress = NO;
   }];
   
@@ -91,19 +97,31 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
   [self.navigationItem setLeftBarButtonItems:@[ swapViewsButton, sideBySideButton]];
 }
 
-- (void)setupSavePhotoButton {
-  UIBarButtonItem *savePhotoButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(savePhoto:)];
-  [self.navigationItem setRightBarButtonItem:savePhotoButton];
+#pragma mark - Save Photo Bar Button Item
+- (void)presentSavePhotoButtonAnimated:(BOOL)animated {
+  if (!self.savePhotoButton) {
+    self.savePhotoButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(savePhoto:)];
+  }
+  
+  [self.navigationItem setRightBarButtonItem:self.savePhotoButton animated:animated];
+}
+
+- (void)removeSavePhotoButtonAnimated:(BOOL)animated {
+  [self.navigationItem setRightBarButtonItem:nil animated:animated];
 }
 
 #pragma mark - UIBarButtonItem Listeners
 - (void)swapViews:(UIBarButtonItem *)sender {
   self.transitionInProgress = YES;
   
-  DDDDoodleView *toBackView = [self.firstDoodleViewController isDoodleViewTransformed] ? self.firstDoodleViewController.doodleView : self.secondDoodleViewController.doodleView;
-  DDDDoodleView *toFrontView = [self.firstDoodleViewController isDoodleViewTransformed]  ? self.secondDoodleViewController.doodleView : self.firstDoodleViewController.doodleView;
+  DDDDoodleView *toBackView = [self frontMostDoodleViewController] == self.firstDoodleViewController ? self.firstDoodleViewController.doodleView : self.secondDoodleViewController.doodleView;
+  DDDDoodleView *toFrontView = [self frontMostDoodleViewController] == self.firstDoodleViewController ? self.secondDoodleViewController.doodleView : self.firstDoodleViewController.doodleView;
   
-  [self performTransition:TransitionTypeCircle frontView:toFrontView backView:toBackView animated:YES completion:^(BOOL finished) {
+  [self performTransition:TransitionTypeCircle
+                frontView:toFrontView
+                 backView:toBackView
+                 animated:YES
+               completion:^(BOOL finished) {
     self.transitionInProgress = NO;
   }];
 }
@@ -111,7 +129,13 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
 - (void)sideBySideViews:(UIBarButtonItem *)sender {
   self.transitionInProgress = YES;
   
-  [self performTransition:TransitionTypeSideBySide frontView:nil backView:nil animated:YES completion:^(BOOL finished) {
+  [self removeSavePhotoButtonAnimated:YES];
+  
+  [self performTransition:TransitionTypeSideBySide
+                frontView:nil
+                 backView:nil
+                 animated:YES
+               completion:^(BOOL finished) {
     self.transitionInProgress = NO;
   }];
 }
@@ -120,7 +144,7 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
   
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
     
-    UIImage *image = [UIImage imageWithView:self.firstDoodleViewController.doodleView];
+    UIImage *image = [UIImage imageWithView:[self frontMostDoodleViewController].doodleView];
     
     [[DDDPhotoPersistanceManager sharedManager] saveImageToCameraRoll:image completion:^(BOOL success, NSError *error) {
       dispatch_async(dispatch_get_main_queue(), ^{
@@ -140,7 +164,11 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
   
   if ([self isCurrentlySideBySideView]) {
     DDDDoodleView *toBackView = (controller == self.firstDoodleViewController) ? self.secondDoodleViewController.doodleView : self.firstDoodleViewController.doodleView;
-    [self performTransition:TransitionTypeFromSideBySide frontView:controller.doodleView backView:toBackView animated:YES completion:^(BOOL finished) {
+    [self performTransition:TransitionTypeFromSideBySide
+                  frontView:controller.doodleView
+                   backView:toBackView animated:YES
+                 completion:^(BOOL finished) {
+      [self presentSavePhotoButtonAnimated:YES];
       self.transitionInProgress = NO;
     }];
   }
@@ -151,7 +179,11 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
 }
 
 #pragma mark - Transition Dispatcher
-- (void)performTransition:(TransitionType)transition frontView:(DDDDoodleView *)frontView backView:(DDDDoodleView *)backView animated:(BOOL)animated completion:(void(^)(BOOL finished))completion {
+- (void)performTransition:(TransitionType)transition
+                frontView:(DDDDoodleView *)frontView
+                 backView:(DDDDoodleView *)backView
+                 animated:(BOOL)animated
+               completion:(void(^)(BOOL finished))completion {
   
   switch (transition) {
     case TransitionTypeCircle:
@@ -177,6 +209,7 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
   }
 }
 
+#pragma mark - Private Helper - Front Most ViewController
 - (DDDDoodleViewController *)frontMostDoodleViewController {
   
   DDDDoodleViewController *frontMostDoodleViewController;

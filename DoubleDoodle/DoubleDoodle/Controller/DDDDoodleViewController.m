@@ -12,10 +12,12 @@
 static CGFloat const kDoodleViewFrameInsetX = 10.0f;
 static CGFloat const kDoodleViewFrameInsetY = 70.0f;
 static CGFloat const kDoodleViewOriginPositionY = 20.0f + 44.0f + 10.0f;
+static CGFloat const kDoodleViewLineWidth = 4.0f;
 
-@interface DDDDoodleViewController ()
+@interface DDDDoodleViewController () <DDDDoodleViewDelegate>
 
 @property (nonatomic, copy) NSString *xml;
+@property (nonatomic, assign, getter = isDoodleViewEnabled) BOOL doodleViewEnabled;
 
 @end
 
@@ -65,13 +67,21 @@ static CGFloat const kDoodleViewOriginPositionY = 20.0f + 44.0f + 10.0f;
   UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doodleViewTapped:)];
   
   _doodleView = [[DDDDoodleView alloc] initWithFrame:[self doodleViewFrame]];
+  [_doodleView setDelegate:self];
   [_doodleView setBackgroundColor:backgroundColor];
   [_doodleView setLineColor:lineStrokeColor];
+  [_doodleView setLineWidth:kDoodleViewLineWidth];
   [_doodleView addGestureRecognizer:tapGesture];
   
   [self.view addSubview:_doodleView];
 }
 
+#pragma mark - DDDDoodleView Delegate
+- (BOOL)canDrawOnDoodleView:(DDDDoodleView *)doodleView {
+  return ![self isDoodleViewTransformed];
+}
+
+#pragma mark - Transform Helper
 - (BOOL)isDoodleViewTransformed {
   return !CGAffineTransformIsIdentity(self.doodleView.transform);
 }

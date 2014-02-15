@@ -13,6 +13,9 @@ static CGFloat        const kTransformScale           = 0.5f;
 static CGFloat        const kToBackViewAlpha          = 0.5f;
 static CGFloat        const kInterDoodleViewSpacing   = 5.0f;
 
+static NSTimeInterval const kFromSideBySideDepressAnimationDuration = 0.1f;
+static NSTimeInterval const kFromSideBySideDepressScale             = 0.95f;
+
 @implementation DDDDoodleContainerViewController (DoodleViewTransitions)
 
 - (void)performTransitionCarouselToBackView:(UIView *)toBackView
@@ -89,23 +92,30 @@ static CGFloat        const kInterDoodleViewSpacing   = 5.0f;
                                        animated:(BOOL)animated
                                      completion:(void(^)(BOOL finished))completion {
   
-  [UIView animateWithDuration:[self animationDuration:animated]
-                        delay:0.0f
-                      options:UIViewAnimationOptionCurveEaseIn
+  [UIView animateWithDuration:kFromSideBySideDepressAnimationDuration
                    animations:^{
-                     
-                     [self.view bringSubviewToFront:toFrontView];
-                     
-                     [toFrontView setTransform:CGAffineTransformIdentity];
-
-                     CGAffineTransform toBackViewTransform = CGAffineTransformIdentity;
-                     [toBackView setTransform:CGAffineTransformScale(toBackViewTransform, kTransformScale, kTransformScale)];
-                     toBackView.alpha = kToBackViewAlpha;
-                     
+                     CGAffineTransform transform = toFrontView.transform;
+                     [toFrontView setTransform:CGAffineTransformScale(transform, kFromSideBySideDepressScale, kFromSideBySideDepressScale)];
                    } completion:^(BOOL finished) {
-                     if (completion) {
-                       completion(finished);
-                     }
+                     
+                     [UIView animateWithDuration:[self animationDuration:animated]
+                                           delay:0.0f
+                                         options:UIViewAnimationOptionCurveEaseIn
+                                      animations:^{
+                                        
+                                        [self.view bringSubviewToFront:toFrontView];
+                                        
+                                        [toFrontView setTransform:CGAffineTransformIdentity];
+                                        
+                                        CGAffineTransform toBackViewTransform = CGAffineTransformIdentity;
+                                        [toBackView setTransform:CGAffineTransformScale(toBackViewTransform, kTransformScale, kTransformScale)];
+                                        toBackView.alpha = kToBackViewAlpha;
+                                        
+                                      } completion:^(BOOL finished) {
+                                        if (completion) {
+                                          completion(finished);
+                                        }
+                                      }];
                    }];
 }
 

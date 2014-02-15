@@ -10,13 +10,16 @@
 
 @implementation DDDDoodleView
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+  if ([self.delegate respondsToSelector:@selector(canDrawOnDoodleView:)] && [self.delegate canDrawOnDoodleView:self]) {
+    [super touchesBegan:touches withEvent:event];
+  }
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+  if ([self.delegate respondsToSelector:@selector(canDrawOnDoodleView:)] && [self.delegate canDrawOnDoodleView:self]) {
+    [super touchesMoved:touches withEvent:event];
+  }
 }
 
 @end

@@ -138,9 +138,8 @@
 			isa = PBXGroup;
 			children = (
 				E250E12218AF8E0300D1974E /* 3rd Party */,
-				E250E11018AF811E00D1974E /* Categories */,
-				E250E10F18AF811500D1974E /* Managers */,
 				E250E10E18AF80EE00D1974E /* Library */,
+				E250E10F18AF811500D1974E /* Managers */,
 				E250E10D18AF80D700D1974E /* Model */,
 				E250E12718AF8E5A00D1974E /* View */,
 				E250E10B18AF80CB00D1974E /* Controller */,
@@ -199,6 +198,7 @@
 		E250E10E18AF80EE00D1974E /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				E2E97EA018B0273B000550AD /* Categories */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -210,17 +210,6 @@
 				E2E97E9B18B01B7D000550AD /* DDDPhotoPersistanceManager.m */,
 			);
 			path = Managers;
-			sourceTree = "<group>";
-		};
-		E250E11018AF811E00D1974E /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				E250E12E18AFB3D000D1974E /* DDDDoodleContainerViewController+DoodleViewTransitions.h */,
-				E250E12F18AFB3D000D1974E /* DDDDoodleContainerViewController+DoodleViewTransitions.m */,
-				E2E97E9D18B022EB000550AD /* UIImage+UIViews.h */,
-				E2E97E9E18B022EB000550AD /* UIImage+UIViews.m */,
-			);
-			path = Categories;
 			sourceTree = "<group>";
 		};
 		E250E12218AF8E0300D1974E /* 3rd Party */ = {
@@ -257,6 +246,17 @@
 				E250E11B18AF8D1000D1974E /* DDDDoodleViewController.m */,
 			);
 			name = "Doodle VC";
+			sourceTree = "<group>";
+		};
+		E2E97EA018B0273B000550AD /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				E250E12E18AFB3D000D1974E /* DDDDoodleContainerViewController+DoodleViewTransitions.h */,
+				E250E12F18AFB3D000D1974E /* DDDDoodleContainerViewController+DoodleViewTransitions.m */,
+				E2E97E9D18B022EB000550AD /* UIImage+UIViews.h */,
+				E2E97E9E18B022EB000550AD /* UIImage+UIViews.m */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
