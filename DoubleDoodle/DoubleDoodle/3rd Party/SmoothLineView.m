@@ -51,9 +51,7 @@ CGPoint midPoint(CGPoint p1, CGPoint p2);
 #pragma mark UIView lifecycle methods
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
-  self = [super initWithCoder:aDecoder];
-  
-  if (self) {
+  if (self = [super initWithCoder:aDecoder]) {
     // NOTE: do not change the backgroundColor here, so it can be set in IB.
 		_path = CGPathCreateMutable();
     _lineWidth = DEFAULT_WIDTH;
@@ -65,9 +63,7 @@ CGPoint midPoint(CGPoint p1, CGPoint p2);
 }
 
 - (id)initWithFrame:(CGRect)frame {
-  self = [super initWithFrame:frame];
-  
-  if (self) {
+  if (self = [super initWithFrame:frame]) {
     self.backgroundColor = DEFAULT_BACKGROUND_COLOR;
 		_path = CGPathCreateMutable();
     _lineWidth = DEFAULT_WIDTH;
@@ -95,7 +91,7 @@ CGPoint midPoint(CGPoint p1, CGPoint p2);
   self.empty = NO;
 }
 
--(void)dealloc {
+- (void)dealloc {
 	CGPathRelease(_path);
 }
 
@@ -109,12 +105,12 @@ CGPoint midPoint(CGPoint p1, CGPoint p2) {
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
   UITouch *touch = [touches anyObject];
-
+  
   // initializes our point records to current location
   self.previousPoint = [touch previousLocationInView:self];
   self.previousPreviousPoint = [touch previousLocationInView:self];
   self.currentPoint = [touch locationInView:self];
-
+  
   // call touchesMoved:withEvent:, to possibly draw on zero movement
   [self touchesMoved:touches withEvent:event];
 }
@@ -140,7 +136,7 @@ CGPoint midPoint(CGPoint p1, CGPoint p2) {
   
   CGPoint mid1 = midPoint(self.previousPoint, self.previousPreviousPoint);
   CGPoint mid2 = midPoint(self.currentPoint, self.previousPoint);
-
+  
   // to represent the finger movement, create a new path segment,
   // a quadratic bezier path from mid1 to mid2, using previous as a control point
   CGMutablePathRef subpath = CGPathCreateMutable();
@@ -156,13 +152,13 @@ CGPoint midPoint(CGPoint p1, CGPoint p2) {
   // append the quad curve to the accumulated path so far.
 	CGPathAddPath(_path, NULL, subpath);
 	CGPathRelease(subpath);
-
+  
   [self setNeedsDisplayInRect:drawBox];
 }
 
 #pragma mark interface
 
--(void)clear {
+- (void)clear {
   CGMutablePathRef oldPath = _path;
   CFRelease(oldPath);
   _path = CGPathCreateMutable();

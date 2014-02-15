@@ -21,27 +21,27 @@
 #pragma mark - Initializers
 // Should use designated initializer | initWithXML: |
 - (id)init {
-    NSLog(@"Should use designated initializer initWithXML:");
-    return [self initWithXML:@""];
+  NSLog(@"Should use designated initializer initWithXML:");
+  return [self initWithXML:@""];
 }
 
 // Designated Initializer
 - (id)initWithXML:(NSString *)xml {
-    if (self = [super init]) {
-        _xml = xml;
-    }
-    return self;
+  if (self = [super init]) {
+    _xml = xml;
+  }
+  return self;
 }
 
 #pragma mark - View Lifecycle
 - (void)viewDidLoad {
-    [super viewDidLoad];
+  [super viewDidLoad];
 }
 
 #pragma mark - Memory Warning
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    NSLog(@"%s", __FUNCTION__);
+  [super didReceiveMemoryWarning];
+  NSLog(@"%s", __FUNCTION__);
 }
 
 @end
