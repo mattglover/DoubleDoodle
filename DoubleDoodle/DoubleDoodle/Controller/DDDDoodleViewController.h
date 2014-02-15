@@ -8,8 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class DDDDoodleViewController;
+@protocol DDDDoodleViewControllerDelegate <NSObject>
+- (void)didSelectDoodleViewController:(DDDDoodleViewController *)controller;
+@end
+
+@class DDDDoodleView;
 @interface DDDDoodleViewController : UIViewController
 
-- (id)initWithXML:(NSString *)xml;
+@property (nonatomic, assign) id<DDDDoodleViewControllerDelegate> delegate;
+@property (nonatomic, strong) DDDDoodleView *doodleView;
+
+- (id)initWithXML:(NSString *)xml withDelegate:(id<DDDDoodleViewControllerDelegate>)delegate;
+- (BOOL)isDoodleViewTransformed;
 
 @end

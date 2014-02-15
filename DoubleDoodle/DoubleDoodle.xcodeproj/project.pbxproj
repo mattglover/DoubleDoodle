@@ -27,6 +27,10 @@
 		E250E12618AF8E1A00D1974E /* SmoothLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = E250E12418AF8E1A00D1974E /* SmoothLineView.m */; };
 		E250E12A18AF8E6C00D1974E /* DDDDoodleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E250E12918AF8E6C00D1974E /* DDDDoodleView.m */; };
 		E250E12B18AF8E6C00D1974E /* DDDDoodleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E250E12918AF8E6C00D1974E /* DDDDoodleView.m */; };
+		E250E13018AFB3D000D1974E /* DDDDoodleContainerViewController+DoodleViewTransitions.m in Sources */ = {isa = PBXBuildFile; fileRef = E250E12F18AFB3D000D1974E /* DDDDoodleContainerViewController+DoodleViewTransitions.m */; };
+		E250E13118AFB3D000D1974E /* DDDDoodleContainerViewController+DoodleViewTransitions.m in Sources */ = {isa = PBXBuildFile; fileRef = E250E12F18AFB3D000D1974E /* DDDDoodleContainerViewController+DoodleViewTransitions.m */; };
+		E2E97E9C18B01B7D000550AD /* DDDPhotoPersistanceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E97E9B18B01B7D000550AD /* DDDPhotoPersistanceManager.m */; };
+		E2E97E9F18B022EB000550AD /* UIImage+UIViews.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E97E9E18B022EB000550AD /* UIImage+UIViews.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +69,12 @@
 		E250E12418AF8E1A00D1974E /* SmoothLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = SmoothLineView.m; sourceTree = "<group>"; tabWidth = 2; };
 		E250E12818AF8E6C00D1974E /* DDDDoodleView.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = DDDDoodleView.h; sourceTree = "<group>"; tabWidth = 2; };
 		E250E12918AF8E6C00D1974E /* DDDDoodleView.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = DDDDoodleView.m; sourceTree = "<group>"; tabWidth = 2; };
+		E250E12E18AFB3D000D1974E /* DDDDoodleContainerViewController+DoodleViewTransitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DDDDoodleContainerViewController+DoodleViewTransitions.h"; sourceTree = "<group>"; };
+		E250E12F18AFB3D000D1974E /* DDDDoodleContainerViewController+DoodleViewTransitions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DDDDoodleContainerViewController+DoodleViewTransitions.m"; sourceTree = "<group>"; };
+		E2E97E9A18B01B7D000550AD /* DDDPhotoPersistanceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDPhotoPersistanceManager.h; sourceTree = "<group>"; };
+		E2E97E9B18B01B7D000550AD /* DDDPhotoPersistanceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDPhotoPersistanceManager.m; sourceTree = "<group>"; };
+		E2E97E9D18B022EB000550AD /* UIImage+UIViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+UIViews.h"; sourceTree = "<group>"; };
+		E2E97E9E18B022EB000550AD /* UIImage+UIViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+UIViews.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,10 +183,8 @@
 		E250E10B18AF80CB00D1974E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E250E11618AF893300D1974E /* DDDDoodleContainerViewController.h */,
-				E250E11718AF893300D1974E /* DDDDoodleContainerViewController.m */,
-				E250E11A18AF8D1000D1974E /* DDDDoodleViewController.h */,
-				E250E11B18AF8D1000D1974E /* DDDDoodleViewController.m */,
+				E250E12C18AF9D8900D1974E /* Doodle Container VC */,
+				E250E12D18AF9DA200D1974E /* Doodle VC */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -198,6 +206,8 @@
 		E250E10F18AF811500D1974E /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				E2E97E9A18B01B7D000550AD /* DDDPhotoPersistanceManager.h */,
+				E2E97E9B18B01B7D000550AD /* DDDPhotoPersistanceManager.m */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -205,6 +215,10 @@
 		E250E11018AF811E00D1974E /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				E250E12E18AFB3D000D1974E /* DDDDoodleContainerViewController+DoodleViewTransitions.h */,
+				E250E12F18AFB3D000D1974E /* DDDDoodleContainerViewController+DoodleViewTransitions.m */,
+				E2E97E9D18B022EB000550AD /* UIImage+UIViews.h */,
+				E2E97E9E18B022EB000550AD /* UIImage+UIViews.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -225,6 +239,24 @@
 				E250E12918AF8E6C00D1974E /* DDDDoodleView.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		E250E12C18AF9D8900D1974E /* Doodle Container VC */ = {
+			isa = PBXGroup;
+			children = (
+				E250E11618AF893300D1974E /* DDDDoodleContainerViewController.h */,
+				E250E11718AF893300D1974E /* DDDDoodleContainerViewController.m */,
+			);
+			name = "Doodle Container VC";
+			sourceTree = "<group>";
+		};
+		E250E12D18AF9DA200D1974E /* Doodle VC */ = {
+			isa = PBXGroup;
+			children = (
+				E250E11A18AF8D1000D1974E /* DDDDoodleViewController.h */,
+				E250E11B18AF8D1000D1974E /* DDDDoodleViewController.m */,
+			);
+			name = "Doodle VC";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -358,6 +390,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E250E13018AFB3D000D1974E /* DDDDoodleContainerViewController+DoodleViewTransitions.m in Sources */,
+				E2E97E9F18B022EB000550AD /* UIImage+UIViews.m in Sources */,
+				E2E97E9C18B01B7D000550AD /* DDDPhotoPersistanceManager.m in Sources */,
 				E250E12518AF8E1A00D1974E /* SmoothLineView.m in Sources */,
 				E250E11818AF893300D1974E /* DDDDoodleContainerViewController.m in Sources */,
 				E250E0E918AF80B600D1974E /* main.m in Sources */,
@@ -371,6 +406,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E250E13118AFB3D000D1974E /* DDDDoodleContainerViewController+DoodleViewTransitions.m in Sources */,
 				E250E12618AF8E1A00D1974E /* SmoothLineView.m in Sources */,
 				E250E11918AF893300D1974E /* DDDDoodleContainerViewController.m in Sources */,
 				E250E12B18AF8E6C00D1974E /* DDDDoodleView.m in Sources */,
@@ -488,7 +524,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DoubleDoodle/DoubleDoodle-Prefix.pch";
 				INFOPLIST_FILE = "DoubleDoodle/DoubleDoodle-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -501,7 +539,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DoubleDoodle/DoubleDoodle-Prefix.pch";
 				INFOPLIST_FILE = "DoubleDoodle/DoubleDoodle-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -7,7 +7,7 @@
 //
 
 #import "DDDAppDelegate.h"
-#import "DDDDoodleViewController.h"
+#import "DDDDoodleContainerViewController.h"
 
 @implementation DDDAppDelegate
 
@@ -16,9 +16,9 @@
   // Override point for customization after application launch.
   self.window.backgroundColor = [UIColor whiteColor];
   
-  DDDDoodleViewController *doodleViewController = [[DDDDoodleViewController alloc] initWithXML:@""];
+  DDDDoodleContainerViewController *doodleContainerViewController = [[DDDDoodleContainerViewController alloc] initWithXML:@""];
   
-  UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:doodleViewController];
+  UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:doodleContainerViewController];
   [self.window setRootViewController:navigationController];
   
   [self.window makeKeyAndVisible];

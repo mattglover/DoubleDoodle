@@ -15,7 +15,7 @@ static CGFloat const kDoodleViewOriginPositionY = 20.0f + 44.0f + 10.0f;
 
 @interface DDDDoodleViewController ()
 
-@property (nonatomic, strong) DDDDoodleView *doodleView;
+@property (nonatomic, copy) NSString *xml;
 
 @end
 
@@ -25,13 +25,20 @@ static CGFloat const kDoodleViewOriginPositionY = 20.0f + 44.0f + 10.0f;
 // Should use designated initializer | initWithXML: |
 - (id)init {
   NSLog(@"Should use designated initializer initWithXML:");
-  return [self initWithXML:@""];
+  return [self initWithXML:@"" withDelegate:nil];
 }
 
 // Designated Initializer
-- (id)initWithXML:(NSString *)xml {
+- (id)initWithXML:(NSString *)xml withDelegate:(id<DDDDoodleViewControllerDelegate>)delegate {
   if (self = [super init]) {
-  
+    _xml = xml;
+    _delegate = delegate;
+    
+    [self setupBackground];
+    
+    UIColor *backgroundColor = [self.xml isEqualToString:@""] ? [UIColor blackColor] :[UIColor whiteColor];
+    UIColor *lineStrokeColor = [self.xml isEqualToString:@""] ? [UIColor whiteColor] :[UIColor blackColor];
+    [self initDoodleViewWithBackgroundColor:backgroundColor lineStrokeColor:lineStrokeColor];
   }
   return self;
 }
@@ -45,26 +52,35 @@ static CGFloat const kDoodleViewOriginPositionY = 20.0f + 44.0f + 10.0f;
 #pragma mark - View Lifecycle
 - (void)viewDidLoad {
   [super viewDidLoad];
-  
-  [self setupBackground];
-  
-  UIColor *backgroundColor = [UIColor blackColor];
-  UIColor *lineStrokeColor = [UIColor whiteColor];
-  [self setupDoodleViewWithBackgroundColor:backgroundColor lineStrokeColor:lineStrokeColor];
+
 }
 
 #pragma mark - Setup
 - (void)setupBackground {
-  self.view.backgroundColor = [UIColor yellowColor];
+  self.view.backgroundColor = [UIColor clearColor];
 }
 
-- (void)setupDoodleViewWithBackgroundColor:(UIColor *)backgroundColor lineStrokeColor:(UIColor *)lineStrokeColor {
+- (void)initDoodleViewWithBackgroundColor:(UIColor *)backgroundColor lineStrokeColor:(UIColor *)lineStrokeColor {
 
-  self.doodleView = [[DDDDoodleView alloc] initWithFrame:[self doodleViewFrame]];
-  [self.doodleView setBackgroundColor:backgroundColor];
-  [self.doodleView setLineColor:lineStrokeColor];
+  UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doodleViewTapped:)];
   
-  [self.view addSubview:self.doodleView];
+  _doodleView = [[DDDDoodleView alloc] initWithFrame:[self doodleViewFrame]];
+  [_doodleView setBackgroundColor:backgroundColor];
+  [_doodleView setLineColor:lineStrokeColor];
+  [_doodleView addGestureRecognizer:tapGesture];
+  
+  [self.view addSubview:_doodleView];
+}
+
+- (BOOL)isDoodleViewTransformed {
+  return !CGAffineTransformIsIdentity(self.doodleView.transform);
+}
+
+#pragma mark - Tap Gesture Recogniser Listener
+- (void)doodleViewTapped:(UIGestureRecognizer *)sender {
+  if ([self.delegate respondsToSelector:@selector(didSelectDoodleViewController:)]) {
+    [self.delegate didSelectDoodleViewController:self];
+  }
 }
 
 #pragma mark - Private Helper Methods - Frame/Rect
