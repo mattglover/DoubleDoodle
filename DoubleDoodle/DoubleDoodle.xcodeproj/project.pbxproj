@@ -19,8 +19,6 @@
 		E250E0F718AF80B600D1974E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E250E0DC18AF80B600D1974E /* Foundation.framework */; };
 		E250E0F818AF80B600D1974E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E250E0E018AF80B600D1974E /* UIKit.framework */; };
 		E250E10018AF80B600D1974E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E250E0FE18AF80B600D1974E /* InfoPlist.strings */; };
-		E250E10218AF80B600D1974E /* DoubleDoodleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E250E10118AF80B600D1974E /* DoubleDoodleTests.m */; };
-		E250E11518AF88D500D1974E /* DoodleContainerViewControllerSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = E250E11418AF88D500D1974E /* DoodleContainerViewControllerSpecs.m */; };
 		E250E11818AF893300D1974E /* DDDDoodleContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E250E11718AF893300D1974E /* DDDDoodleContainerViewController.m */; };
 		E250E11918AF893300D1974E /* DDDDoodleContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E250E11718AF893300D1974E /* DDDDoodleContainerViewController.m */; };
 		E250E11C18AF8D1000D1974E /* DDDDoodleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E250E11B18AF8D1000D1974E /* DDDDoodleViewController.m */; };
@@ -59,8 +57,6 @@
 		E250E0F518AF80B600D1974E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		E250E0FD18AF80B600D1974E /* DoubleDoodleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DoubleDoodleTests-Info.plist"; sourceTree = "<group>"; };
 		E250E0FF18AF80B600D1974E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		E250E10118AF80B600D1974E /* DoubleDoodleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DoubleDoodleTests.m; sourceTree = "<group>"; };
-		E250E11418AF88D500D1974E /* DoodleContainerViewControllerSpecs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoodleContainerViewControllerSpecs.m; sourceTree = "<group>"; };
 		E250E11618AF893300D1974E /* DDDDoodleContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = DDDDoodleContainerViewController.h; sourceTree = "<group>"; tabWidth = 2; };
 		E250E11718AF893300D1974E /* DDDDoodleContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = DDDDoodleContainerViewController.m; sourceTree = "<group>"; tabWidth = 2; };
 		E250E11A18AF8D1000D1974E /* DDDDoodleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = DDDDoodleViewController.h; sourceTree = "<group>"; tabWidth = 2; };
@@ -160,10 +156,6 @@
 		E250E0FB18AF80B600D1974E /* DoubleDoodleTests */ = {
 			isa = PBXGroup;
 			children = (
-				E250E11318AF849D00D1974E /* Model */,
-				E250E11218AF849600D1974E /* View */,
-				E250E11118AF849000D1974E /* Controller */,
-				E250E10118AF80B600D1974E /* DoubleDoodleTests.m */,
 				E250E0FC18AF80B600D1974E /* Supporting Files */,
 			);
 			path = DoubleDoodleTests;
@@ -215,28 +207,6 @@
 			children = (
 			);
 			path = Categories;
-			sourceTree = "<group>";
-		};
-		E250E11118AF849000D1974E /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				E250E11418AF88D500D1974E /* DoodleContainerViewControllerSpecs.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		E250E11218AF849600D1974E /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		E250E11318AF849D00D1974E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		E250E12218AF8E0300D1974E /* 3rd Party */ = {
@@ -403,10 +373,8 @@
 			files = (
 				E250E12618AF8E1A00D1974E /* SmoothLineView.m in Sources */,
 				E250E11918AF893300D1974E /* DDDDoodleContainerViewController.m in Sources */,
-				E250E11518AF88D500D1974E /* DoodleContainerViewControllerSpecs.m in Sources */,
 				E250E12B18AF8E6C00D1974E /* DDDDoodleView.m in Sources */,
 				E250E11D18AF8D1000D1974E /* DDDDoodleViewController.m in Sources */,
-				E250E10218AF80B600D1974E /* DoubleDoodleTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
