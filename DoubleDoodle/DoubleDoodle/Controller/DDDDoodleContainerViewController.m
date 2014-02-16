@@ -141,7 +141,6 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
 }
 
 - (void)savePhotoButtonTapped:(UIBarButtonItem *)sender {
-  
   [[[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Save to Camera Roll" otherButtonTitles:nil] showInView:self.view];
 }
 
@@ -176,12 +175,17 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
           if (success) {
             [SVProgressHUD showSuccessWithStatus:@"Image Saved"];
           } else {
-            [SVProgressHUD showErrorWithStatus:@"Error saving Image"];
+            [self handleSaveImageError:error];
           }
         });
       }];
     });
   }
+}
+
+- (void)handleSaveImageError:(NSError *)error {
+  NSString *errorMessage = (error.code == -3310) ? @"There was a problem saving your image.\n\nPlease check your Settings\n Privacy -> Photos" : @"There was a problem saving your image." ;
+  [[[UIAlertView alloc] initWithTitle:@"Error" message:errorMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
 }
 
 #pragma mark - Transition Dispatcher
@@ -200,7 +204,6 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
                                       direction:direction
                                      completion:completion];
     }
-
       break;
       
     case TransitionTypeSideBySide:
