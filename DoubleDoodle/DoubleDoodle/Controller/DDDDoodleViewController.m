@@ -36,8 +36,6 @@ static CGFloat const kDoodleViewLineWidth = 4.0f;
     _xml = xml;
     _delegate = delegate;
     
-    [self setupBackground];
-    
     UIColor *backgroundColor = [self.xml isEqualToString:@""] ? [UIColor blackColor] :[UIColor whiteColor];
     UIColor *lineStrokeColor = [self.xml isEqualToString:@""] ? [UIColor whiteColor] :[UIColor blackColor];
     [self initDoodleViewWithBackgroundColor:backgroundColor lineStrokeColor:lineStrokeColor];
@@ -54,17 +52,14 @@ static CGFloat const kDoodleViewLineWidth = 4.0f;
 #pragma mark - View Lifecycle
 - (void)viewDidLoad {
   [super viewDidLoad];
-
 }
 
 #pragma mark - Setup
-- (void)setupBackground {
-  self.view.backgroundColor = [UIColor clearColor];
-}
-
 - (void)initDoodleViewWithBackgroundColor:(UIColor *)backgroundColor lineStrokeColor:(UIColor *)lineStrokeColor {
 
   UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doodleViewTapped:)];
+  UISwipeGestureRecognizer *swipeUpGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(doodleViewSwipeUp:)];
+  [swipeUpGesture setDirection:UISwipeGestureRecognizerDirectionUp];
   
   _doodleView = [[DDDDoodleView alloc] initWithFrame:[self doodleViewFrame]];
   [_doodleView setDelegate:self];
@@ -72,6 +67,7 @@ static CGFloat const kDoodleViewLineWidth = 4.0f;
   [_doodleView setLineColor:lineStrokeColor];
   [_doodleView setLineWidth:kDoodleViewLineWidth];
   [_doodleView addGestureRecognizer:tapGesture];
+  [_doodleView addGestureRecognizer:swipeUpGesture];
   
   [self.view addSubview:_doodleView];
 }
@@ -86,10 +82,16 @@ static CGFloat const kDoodleViewLineWidth = 4.0f;
   return !CGAffineTransformIsIdentity(self.doodleView.transform);
 }
 
-#pragma mark - Tap Gesture Recogniser Listener
+#pragma mark - Tap Gesture Recogniser
 - (void)doodleViewTapped:(UIGestureRecognizer *)sender {
   if ([self.delegate respondsToSelector:@selector(didSelectDoodleViewController:)]) {
     [self.delegate didSelectDoodleViewController:self];
+  }
+}
+
+- (void)doodleViewSwipeUp:(UISwipeGestureRecognizer *)gesture {
+  if(gesture.state == UIGestureRecognizerStateRecognized && [self canClearDoodleView]) {
+    [self.doodleView clear];
   }
 }
 
@@ -100,6 +102,11 @@ static CGFloat const kDoodleViewLineWidth = 4.0f;
   doodleViewFrame.origin.y = kDoodleViewOriginPositionY;
   
   return doodleViewFrame;
+}
+
+- (BOOL)canClearDoodleView {
+  // Can only clear if view is transformed
+  return [self isDoodleViewTransformed];
 }
 
 @end

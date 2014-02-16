@@ -11,7 +11,7 @@
 static NSTimeInterval const kDefaultAnimationDuration = 0.4f;
 static CGFloat        const kTransformScale           = 0.5f;
 static CGFloat        const kToBackViewAlpha          = 0.5f;
-static CGFloat        const kInterDoodleViewSpacing   = 5.0f;
+static CGFloat        const kInterDoodleViewSpacing   = 6.0f;
 
 static NSTimeInterval const kFromSideBySideDepressAnimationDuration = 0.1f;
 static NSTimeInterval const kFromSideBySideDepressScale             = 0.95f;

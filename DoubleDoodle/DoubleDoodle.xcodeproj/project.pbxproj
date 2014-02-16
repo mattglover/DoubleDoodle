@@ -1,1546 +1,670 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>archiveVersion</key>
-	<string>1</string>
-	<key>classes</key>
-	<dict/>
-	<key>objectVersion</key>
-	<string>46</string>
-	<key>objects</key>
-	<dict>
-		<key>42A0CA88D5CA4AE8846F610C</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Pods.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>43BFEE77928B4E859045AC0F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>619D1BC1F9E84A26BF7A8C45</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>4667CE8DFFFB4C46AB0DB57F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods-DoubleDoodleTests.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Pods-DoubleDoodleTests.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>619D1BC1F9E84A26BF7A8C45</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>libPods-DoubleDoodleTests.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>6B7EFA98A7F3436487AF3318</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Check Pods Manifest.lock</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
-if [[ $? != 0 ]] ; then
-    cat &lt;&lt; EOM
-error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
-EOM
-    exit 1
-fi
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>8E589BDF264E4531A414DAA9</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Copy Pods Resources</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>"${SRCROOT}/Pods/Pods-DoubleDoodleTests-resources.sh"
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>9EFF8470F2D8474AA329C59F</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>libPods.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>A473CC1EB30548DDA40325A2</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Copy Pods Resources</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>"${SRCROOT}/Pods/Pods-resources.sh"
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>E250E0D018AF80B600D1974E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>E250E0E218AF80B600D1974E</string>
-				<string>E250E0FB18AF80B600D1974E</string>
-				<string>E250E0DB18AF80B600D1974E</string>
-				<string>E250E0DA18AF80B600D1974E</string>
-				<string>4667CE8DFFFB4C46AB0DB57F</string>
-				<string>42A0CA88D5CA4AE8846F610C</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E250E0D118AF80B600D1974E</key>
-		<dict>
-			<key>attributes</key>
-			<dict>
-				<key>CLASSPREFIX</key>
-				<string>DDD</string>
-				<key>LastUpgradeCheck</key>
-				<string>0500</string>
-				<key>ORGANIZATIONNAME</key>
-				<string>Duchy Software</string>
-				<key>TargetAttributes</key>
-				<dict>
-					<key>E250E0F318AF80B600D1974E</key>
-					<dict>
-						<key>TestTargetID</key>
-						<string>E250E0D818AF80B600D1974E</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>buildConfigurationList</key>
-			<string>E250E0D418AF80B600D1974E</string>
-			<key>compatibilityVersion</key>
-			<string>Xcode 3.2</string>
-			<key>developmentRegion</key>
-			<string>English</string>
-			<key>hasScannedForEncodings</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXProject</string>
-			<key>knownRegions</key>
-			<array>
-				<string>en</string>
-			</array>
-			<key>mainGroup</key>
-			<string>E250E0D018AF80B600D1974E</string>
-			<key>productRefGroup</key>
-			<string>E250E0DA18AF80B600D1974E</string>
-			<key>projectDirPath</key>
-			<string></string>
-			<key>projectReferences</key>
-			<array/>
-			<key>projectRoot</key>
-			<string></string>
-			<key>targets</key>
-			<array>
-				<string>E250E0D818AF80B600D1974E</string>
-				<string>E250E0F318AF80B600D1974E</string>
-			</array>
-		</dict>
-		<key>E250E0D418AF80B600D1974E</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>E250E10318AF80B600D1974E</string>
-				<string>E250E10418AF80B600D1974E</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>E250E0D518AF80B600D1974E</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>E250E13018AFB3D000D1974E</string>
-				<string>E2E97E9F18B022EB000550AD</string>
-				<string>E2E97E9C18B01B7D000550AD</string>
-				<string>E250E12518AF8E1A00D1974E</string>
-				<string>E250E11818AF893300D1974E</string>
-				<string>E250E0E918AF80B600D1974E</string>
-				<string>E250E12A18AF8E6C00D1974E</string>
-				<string>E250E11C18AF8D1000D1974E</string>
-				<string>E250E0ED18AF80B600D1974E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>E250E0D618AF80B600D1974E</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>E250E0DF18AF80B600D1974E</string>
-				<string>E250E0E118AF80B600D1974E</string>
-				<string>E250E0DD18AF80B600D1974E</string>
-				<string>ECC2518F9F994102ACC9CA8A</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>E250E0D718AF80B600D1974E</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>E250E0E718AF80B600D1974E</string>
-				<string>E250E0EF18AF80B600D1974E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>E250E0D818AF80B600D1974E</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>E250E10518AF80B600D1974E</string>
-			<key>buildPhases</key>
-			<array>
-				<string>6B7EFA98A7F3436487AF3318</string>
-				<string>E250E0D518AF80B600D1974E</string>
-				<string>E250E0D618AF80B600D1974E</string>
-				<string>E250E0D718AF80B600D1974E</string>
-				<string>A473CC1EB30548DDA40325A2</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>DoubleDoodle</string>
-			<key>productName</key>
-			<string>DoubleDoodle</string>
-			<key>productReference</key>
-			<string>E250E0D918AF80B600D1974E</string>
-			<key>productType</key>
-			<string>com.apple.product-type.application</string>
-		</dict>
-		<key>E250E0D918AF80B600D1974E</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.application</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>DoubleDoodle.app</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>E250E0DA18AF80B600D1974E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>E250E0D918AF80B600D1974E</string>
-				<string>E250E0F418AF80B600D1974E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Products</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E250E0DB18AF80B600D1974E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>E250E0DC18AF80B600D1974E</string>
-				<string>E250E0DE18AF80B600D1974E</string>
-				<string>E250E0E018AF80B600D1974E</string>
-				<string>E250E0F518AF80B600D1974E</string>
-				<string>619D1BC1F9E84A26BF7A8C45</string>
-				<string>9EFF8470F2D8474AA329C59F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E250E0DC18AF80B600D1974E</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>Foundation.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/Foundation.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>E250E0DD18AF80B600D1974E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E250E0DC18AF80B600D1974E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>E250E0DE18AF80B600D1974E</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>CoreGraphics.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/CoreGraphics.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>E250E0DF18AF80B600D1974E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E250E0DE18AF80B600D1974E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>E250E0E018AF80B600D1974E</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>UIKit.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/UIKit.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>E250E0E118AF80B600D1974E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E250E0E018AF80B600D1974E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>E250E0E218AF80B600D1974E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>E250E12218AF8E0300D1974E</string>
-				<string>E250E10E18AF80EE00D1974E</string>
-				<string>E250E10F18AF811500D1974E</string>
-				<string>E250E10D18AF80D700D1974E</string>
-				<string>E250E12718AF8E5A00D1974E</string>
-				<string>E250E10B18AF80CB00D1974E</string>
-				<string>E250E0EE18AF80B600D1974E</string>
-				<string>E250E0E318AF80B600D1974E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>DoubleDoodle</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E250E0E318AF80B600D1974E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>E250E0EB18AF80B600D1974E</string>
-				<string>E250E0EC18AF80B600D1974E</string>
-				<string>E250E0E418AF80B600D1974E</string>
-				<string>E250E0E518AF80B600D1974E</string>
-				<string>E250E0E818AF80B600D1974E</string>
-				<string>E250E0EA18AF80B600D1974E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Supporting Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E250E0E418AF80B600D1974E</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>DoubleDoodle-Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E250E0E518AF80B600D1974E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>E250E0E618AF80B600D1974E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>InfoPlist.strings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E250E0E618AF80B600D1974E</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.strings</string>
-			<key>name</key>
-			<string>en</string>
-			<key>path</key>
-			<string>en.lproj/InfoPlist.strings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E250E0E718AF80B600D1974E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E250E0E518AF80B600D1974E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>E250E0E818AF80B600D1974E</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>main.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E250E0E918AF80B600D1974E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E250E0E818AF80B600D1974E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>E250E0EA18AF80B600D1974E</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>DoubleDoodle-Prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E250E0EB18AF80B600D1974E</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>DDDAppDelegate.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E250E0EC18AF80B600D1974E</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>DDDAppDelegate.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E250E0ED18AF80B600D1974E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E250E0EC18AF80B600D1974E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>E250E0EE18AF80B600D1974E</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>folder.assetcatalog</string>
-			<key>path</key>
-			<string>Images.xcassets</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E250E0EF18AF80B600D1974E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E250E0EE18AF80B600D1974E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>E250E0F018AF80B600D1974E</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>E250E13118AFB3D000D1974E</string>
-				<string>E250E12618AF8E1A00D1974E</string>
-				<string>E250E11918AF893300D1974E</string>
-				<string>E250E12B18AF8E6C00D1974E</string>
-				<string>E250E11D18AF8D1000D1974E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>E250E0F118AF80B600D1974E</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>E250E0F618AF80B600D1974E</string>
-				<string>E250E0F818AF80B600D1974E</string>
-				<string>E250E0F718AF80B600D1974E</string>
-				<string>43BFEE77928B4E859045AC0F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>E250E0F218AF80B600D1974E</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>E250E10018AF80B600D1974E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>E250E0F318AF80B600D1974E</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>E250E10818AF80B600D1974E</string>
-			<key>buildPhases</key>
-			<array>
-				<string>F2C192AB435E4818A81739E6</string>
-				<string>E250E0F018AF80B600D1974E</string>
-				<string>E250E0F118AF80B600D1974E</string>
-				<string>E250E0F218AF80B600D1974E</string>
-				<string>8E589BDF264E4531A414DAA9</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array>
-				<string>E250E0FA18AF80B600D1974E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>DoubleDoodleTests</string>
-			<key>productName</key>
-			<string>DoubleDoodleTests</string>
-			<key>productReference</key>
-			<string>E250E0F418AF80B600D1974E</string>
-			<key>productType</key>
-			<string>com.apple.product-type.bundle.unit-test</string>
-		</dict>
-		<key>E250E0F418AF80B600D1974E</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.cfbundle</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>DoubleDoodleTests.xctest</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>E250E0F518AF80B600D1974E</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>XCTest.framework</string>
-			<key>path</key>
-			<string>Library/Frameworks/XCTest.framework</string>
-			<key>sourceTree</key>
-			<string>DEVELOPER_DIR</string>
-		</dict>
-		<key>E250E0F618AF80B600D1974E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E250E0F518AF80B600D1974E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>E250E0F718AF80B600D1974E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E250E0DC18AF80B600D1974E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>E250E0F818AF80B600D1974E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E250E0E018AF80B600D1974E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>E250E0F918AF80B600D1974E</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>E250E0D118AF80B600D1974E</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>E250E0D818AF80B600D1974E</string>
-			<key>remoteInfo</key>
-			<string>DoubleDoodle</string>
-		</dict>
-		<key>E250E0FA18AF80B600D1974E</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXTargetDependency</string>
-			<key>target</key>
-			<string>E250E0D818AF80B600D1974E</string>
-			<key>targetProxy</key>
-			<string>E250E0F918AF80B600D1974E</string>
-		</dict>
-		<key>E250E0FB18AF80B600D1974E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>E250E0FC18AF80B600D1974E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>DoubleDoodleTests</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E250E0FC18AF80B600D1974E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>E250E0FD18AF80B600D1974E</string>
-				<string>E250E0FE18AF80B600D1974E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Supporting Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E250E0FD18AF80B600D1974E</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>DoubleDoodleTests-Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E250E0FE18AF80B600D1974E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>E250E0FF18AF80B600D1974E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>InfoPlist.strings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E250E0FF18AF80B600D1974E</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.strings</string>
-			<key>name</key>
-			<string>en</string>
-			<key>path</key>
-			<string>en.lproj/InfoPlist.strings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E250E10018AF80B600D1974E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E250E0FE18AF80B600D1974E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>E250E10318AF80B600D1974E</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>ARCHS</key>
-				<string>$(ARCHS_STANDARD_INCLUDING_64_BIT)</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_DYNAMIC_NO_PIC</key>
-				<string>NO</string>
-				<key>GCC_OPTIMIZATION_LEVEL</key>
-				<string>0</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
-				<string>NO</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES_ERROR</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>7.0</string>
-				<key>ONLY_ACTIVE_ARCH</key>
-				<string>YES</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>E250E10418AF80B600D1974E</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>ARCHS</key>
-				<string>$(ARCHS_STANDARD_INCLUDING_64_BIT)</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>YES</string>
-				<key>ENABLE_NS_ASSERTIONS</key>
-				<string>NO</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES_ERROR</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>7.0</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>VALIDATE_PRODUCT</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>E250E10518AF80B600D1974E</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>E250E10618AF80B600D1974E</string>
-				<string>E250E10718AF80B600D1974E</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>E250E10618AF80B600D1974E</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>42A0CA88D5CA4AE8846F610C</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string>AppIcon</string>
-				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
-				<string>LaunchImage</string>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>DoubleDoodle/DoubleDoodle-Prefix.pch</string>
-				<key>INFOPLIST_FILE</key>
-				<string>DoubleDoodle/DoubleDoodle-Info.plist</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>7.0</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>app</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>E250E10718AF80B600D1974E</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>42A0CA88D5CA4AE8846F610C</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string>AppIcon</string>
-				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
-				<string>LaunchImage</string>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>DoubleDoodle/DoubleDoodle-Prefix.pch</string>
-				<key>INFOPLIST_FILE</key>
-				<string>DoubleDoodle/DoubleDoodle-Info.plist</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>7.0</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>app</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>E250E10818AF80B600D1974E</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>E250E10918AF80B600D1974E</string>
-				<string>E250E10A18AF80B600D1974E</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>E250E10918AF80B600D1974E</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>4667CE8DFFFB4C46AB0DB57F</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ARCHS</key>
-				<string>$(ARCHS_STANDARD_INCLUDING_64_BIT)</string>
-				<key>BUNDLE_LOADER</key>
-				<string>$(BUILT_PRODUCTS_DIR)/DoubleDoodle.app/DoubleDoodle</string>
-				<key>FRAMEWORK_SEARCH_PATHS</key>
-				<array>
-					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
-					<string>$(inherited)</string>
-					<string>$(DEVELOPER_FRAMEWORKS_DIR)</string>
-				</array>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>DoubleDoodle/DoubleDoodle-Prefix.pch</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>INFOPLIST_FILE</key>
-				<string>DoubleDoodleTests/DoubleDoodleTests-Info.plist</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>TEST_HOST</key>
-				<string>$(BUNDLE_LOADER)</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>xctest</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>E250E10A18AF80B600D1974E</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>4667CE8DFFFB4C46AB0DB57F</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ARCHS</key>
-				<string>$(ARCHS_STANDARD_INCLUDING_64_BIT)</string>
-				<key>BUNDLE_LOADER</key>
-				<string>$(BUILT_PRODUCTS_DIR)/DoubleDoodle.app/DoubleDoodle</string>
-				<key>FRAMEWORK_SEARCH_PATHS</key>
-				<array>
-					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
-					<string>$(inherited)</string>
-					<string>$(DEVELOPER_FRAMEWORKS_DIR)</string>
-				</array>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>DoubleDoodle/DoubleDoodle-Prefix.pch</string>
-				<key>INFOPLIST_FILE</key>
-				<string>DoubleDoodleTests/DoubleDoodleTests-Info.plist</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>TEST_HOST</key>
-				<string>$(BUNDLE_LOADER)</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>xctest</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>E250E10B18AF80CB00D1974E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>E250E12C18AF9D8900D1974E</string>
-				<string>E250E12D18AF9DA200D1974E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Controller</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E250E10D18AF80D700D1974E</key>
-		<dict>
-			<key>children</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Model</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E250E10E18AF80EE00D1974E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>E2E97EA018B0273B000550AD</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Library</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E250E10F18AF811500D1974E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>E2E97E9A18B01B7D000550AD</string>
-				<string>E2E97E9B18B01B7D000550AD</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Managers</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E250E11618AF893300D1974E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>indentWidth</key>
-			<string>2</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>DDDDoodleContainerViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-			<key>tabWidth</key>
-			<string>2</string>
-		</dict>
-		<key>E250E11718AF893300D1974E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>indentWidth</key>
-			<string>2</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>DDDDoodleContainerViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-			<key>tabWidth</key>
-			<string>2</string>
-		</dict>
-		<key>E250E11818AF893300D1974E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E250E11718AF893300D1974E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>E250E11918AF893300D1974E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E250E11718AF893300D1974E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>E250E11A18AF8D1000D1974E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>indentWidth</key>
-			<string>2</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>DDDDoodleViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-			<key>tabWidth</key>
-			<string>2</string>
-		</dict>
-		<key>E250E11B18AF8D1000D1974E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>indentWidth</key>
-			<string>2</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>DDDDoodleViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-			<key>tabWidth</key>
-			<string>2</string>
-		</dict>
-		<key>E250E11C18AF8D1000D1974E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E250E11B18AF8D1000D1974E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>E250E11D18AF8D1000D1974E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E250E11B18AF8D1000D1974E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>E250E12218AF8E0300D1974E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>E250E12318AF8E1A00D1974E</string>
-				<string>E250E12418AF8E1A00D1974E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>3rd Party</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E250E12318AF8E1A00D1974E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>SmoothLineView.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E250E12418AF8E1A00D1974E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>indentWidth</key>
-			<string>2</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>SmoothLineView.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-			<key>tabWidth</key>
-			<string>2</string>
-		</dict>
-		<key>E250E12518AF8E1A00D1974E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E250E12418AF8E1A00D1974E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>E250E12618AF8E1A00D1974E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E250E12418AF8E1A00D1974E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>E250E12718AF8E5A00D1974E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>E250E12818AF8E6C00D1974E</string>
-				<string>E250E12918AF8E6C00D1974E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>View</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E250E12818AF8E6C00D1974E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>indentWidth</key>
-			<string>2</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>DDDDoodleView.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-			<key>tabWidth</key>
-			<string>2</string>
-		</dict>
-		<key>E250E12918AF8E6C00D1974E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>indentWidth</key>
-			<string>2</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>DDDDoodleView.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-			<key>tabWidth</key>
-			<string>2</string>
-		</dict>
-		<key>E250E12A18AF8E6C00D1974E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E250E12918AF8E6C00D1974E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>E250E12B18AF8E6C00D1974E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E250E12918AF8E6C00D1974E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>E250E12C18AF9D8900D1974E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>E250E11618AF893300D1974E</string>
-				<string>E250E11718AF893300D1974E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Doodle Container VC</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E250E12D18AF9DA200D1974E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>E250E11A18AF8D1000D1974E</string>
-				<string>E250E11B18AF8D1000D1974E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Doodle VC</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E250E12E18AFB3D000D1974E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>DDDDoodleContainerViewController+DoodleViewTransitions.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E250E12F18AFB3D000D1974E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>DDDDoodleContainerViewController+DoodleViewTransitions.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E250E13018AFB3D000D1974E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E250E12F18AFB3D000D1974E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>E250E13118AFB3D000D1974E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E250E12F18AFB3D000D1974E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>E2E97E9A18B01B7D000550AD</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>DDDPhotoPersistanceManager.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E2E97E9B18B01B7D000550AD</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>DDDPhotoPersistanceManager.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E2E97E9C18B01B7D000550AD</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E2E97E9B18B01B7D000550AD</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>E2E97E9D18B022EB000550AD</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>UIImage+UIViews.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E2E97E9E18B022EB000550AD</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>UIImage+UIViews.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E2E97E9F18B022EB000550AD</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E2E97E9E18B022EB000550AD</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>E2E97EA018B0273B000550AD</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>E250E12E18AFB3D000D1974E</string>
-				<string>E250E12F18AFB3D000D1974E</string>
-				<string>E2E97E9D18B022EB000550AD</string>
-				<string>E2E97E9E18B022EB000550AD</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Categories</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>ECC2518F9F994102ACC9CA8A</key>
-		<dict>
-			<key>fileRef</key>
-			<string>9EFF8470F2D8474AA329C59F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F2C192AB435E4818A81739E6</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Check Pods Manifest.lock</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
-if [[ $? != 0 ]] ; then
-    cat &lt;&lt; EOM
-error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
-EOM
-    exit 1
-fi
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-	</dict>
-	<key>rootObject</key>
-	<string>E250E0D118AF80B600D1974E</string>
-</dict>
-</plist>
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		43BFEE77928B4E859045AC0F /* libPods-DoubleDoodleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 619D1BC1F9E84A26BF7A8C45 /* libPods-DoubleDoodleTests.a */; };
+		E250E0DD18AF80B600D1974E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E250E0DC18AF80B600D1974E /* Foundation.framework */; };
+		E250E0DF18AF80B600D1974E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E250E0DE18AF80B600D1974E /* CoreGraphics.framework */; };
+		E250E0E118AF80B600D1974E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E250E0E018AF80B600D1974E /* UIKit.framework */; };
+		E250E0E718AF80B600D1974E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E250E0E518AF80B600D1974E /* InfoPlist.strings */; };
+		E250E0E918AF80B600D1974E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E250E0E818AF80B600D1974E /* main.m */; };
+		E250E0ED18AF80B600D1974E /* DDDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E250E0EC18AF80B600D1974E /* DDDAppDelegate.m */; };
+		E250E0EF18AF80B600D1974E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E250E0EE18AF80B600D1974E /* Images.xcassets */; };
+		E250E0F618AF80B600D1974E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E250E0F518AF80B600D1974E /* XCTest.framework */; };
+		E250E0F718AF80B600D1974E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E250E0DC18AF80B600D1974E /* Foundation.framework */; };
+		E250E0F818AF80B600D1974E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E250E0E018AF80B600D1974E /* UIKit.framework */; };
+		E250E10018AF80B600D1974E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E250E0FE18AF80B600D1974E /* InfoPlist.strings */; };
+		E250E11818AF893300D1974E /* DDDDoodleContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E250E11718AF893300D1974E /* DDDDoodleContainerViewController.m */; };
+		E250E11918AF893300D1974E /* DDDDoodleContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E250E11718AF893300D1974E /* DDDDoodleContainerViewController.m */; };
+		E250E11C18AF8D1000D1974E /* DDDDoodleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E250E11B18AF8D1000D1974E /* DDDDoodleViewController.m */; };
+		E250E11D18AF8D1000D1974E /* DDDDoodleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E250E11B18AF8D1000D1974E /* DDDDoodleViewController.m */; };
+		E250E12518AF8E1A00D1974E /* SmoothLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = E250E12418AF8E1A00D1974E /* SmoothLineView.m */; };
+		E250E12618AF8E1A00D1974E /* SmoothLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = E250E12418AF8E1A00D1974E /* SmoothLineView.m */; };
+		E250E12A18AF8E6C00D1974E /* DDDDoodleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E250E12918AF8E6C00D1974E /* DDDDoodleView.m */; };
+		E250E12B18AF8E6C00D1974E /* DDDDoodleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E250E12918AF8E6C00D1974E /* DDDDoodleView.m */; };
+		E250E13018AFB3D000D1974E /* DDDDoodleContainerViewController+DoodleViewTransitions.m in Sources */ = {isa = PBXBuildFile; fileRef = E250E12F18AFB3D000D1974E /* DDDDoodleContainerViewController+DoodleViewTransitions.m */; };
+		E250E13118AFB3D000D1974E /* DDDDoodleContainerViewController+DoodleViewTransitions.m in Sources */ = {isa = PBXBuildFile; fileRef = E250E12F18AFB3D000D1974E /* DDDDoodleContainerViewController+DoodleViewTransitions.m */; };
+		E29077D218B13EEA0079C396 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29077D118B13EEA0079C396 /* QuartzCore.framework */; };
+		E2E97E9C18B01B7D000550AD /* DDDPhotoPersistanceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E97E9B18B01B7D000550AD /* DDDPhotoPersistanceManager.m */; };
+		E2E97E9F18B022EB000550AD /* UIImage+UIViews.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E97E9E18B022EB000550AD /* UIImage+UIViews.m */; };
+		ECC2518F9F994102ACC9CA8A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EFF8470F2D8474AA329C59F /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E250E0F918AF80B600D1974E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E250E0D118AF80B600D1974E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E250E0D818AF80B600D1974E;
+			remoteInfo = DoubleDoodle;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		42A0CA88D5CA4AE8846F610C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		4667CE8DFFFB4C46AB0DB57F /* Pods-DoubleDoodleTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoubleDoodleTests.xcconfig"; path = "Pods/Pods-DoubleDoodleTests.xcconfig"; sourceTree = "<group>"; };
+		619D1BC1F9E84A26BF7A8C45 /* libPods-DoubleDoodleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DoubleDoodleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9EFF8470F2D8474AA329C59F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E250E0D918AF80B600D1974E /* DoubleDoodle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoubleDoodle.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E250E0DC18AF80B600D1974E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E250E0DE18AF80B600D1974E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E250E0E018AF80B600D1974E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E250E0E418AF80B600D1974E /* DoubleDoodle-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DoubleDoodle-Info.plist"; sourceTree = "<group>"; };
+		E250E0E618AF80B600D1974E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E250E0E818AF80B600D1974E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E250E0EA18AF80B600D1974E /* DoubleDoodle-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DoubleDoodle-Prefix.pch"; sourceTree = "<group>"; };
+		E250E0EB18AF80B600D1974E /* DDDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDDAppDelegate.h; sourceTree = "<group>"; };
+		E250E0EC18AF80B600D1974E /* DDDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDDAppDelegate.m; sourceTree = "<group>"; };
+		E250E0EE18AF80B600D1974E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E250E0F418AF80B600D1974E /* DoubleDoodleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoubleDoodleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E250E0F518AF80B600D1974E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		E250E0FD18AF80B600D1974E /* DoubleDoodleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DoubleDoodleTests-Info.plist"; sourceTree = "<group>"; };
+		E250E0FF18AF80B600D1974E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E250E11618AF893300D1974E /* DDDDoodleContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = DDDDoodleContainerViewController.h; sourceTree = "<group>"; tabWidth = 2; };
+		E250E11718AF893300D1974E /* DDDDoodleContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = DDDDoodleContainerViewController.m; sourceTree = "<group>"; tabWidth = 2; };
+		E250E11A18AF8D1000D1974E /* DDDDoodleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = DDDDoodleViewController.h; sourceTree = "<group>"; tabWidth = 2; };
+		E250E11B18AF8D1000D1974E /* DDDDoodleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = DDDDoodleViewController.m; sourceTree = "<group>"; tabWidth = 2; };
+		E250E12318AF8E1A00D1974E /* SmoothLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmoothLineView.h; sourceTree = "<group>"; };
+		E250E12418AF8E1A00D1974E /* SmoothLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = SmoothLineView.m; sourceTree = "<group>"; tabWidth = 2; };
+		E250E12818AF8E6C00D1974E /* DDDDoodleView.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = DDDDoodleView.h; sourceTree = "<group>"; tabWidth = 2; };
+		E250E12918AF8E6C00D1974E /* DDDDoodleView.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = DDDDoodleView.m; sourceTree = "<group>"; tabWidth = 2; };
+		E250E12E18AFB3D000D1974E /* DDDDoodleContainerViewController+DoodleViewTransitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DDDDoodleContainerViewController+DoodleViewTransitions.h"; sourceTree = "<group>"; };
+		E250E12F18AFB3D000D1974E /* DDDDoodleContainerViewController+DoodleViewTransitions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DDDDoodleContainerViewController+DoodleViewTransitions.m"; sourceTree = "<group>"; };
+		E29077D118B13EEA0079C396 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E2E97E9A18B01B7D000550AD /* DDDPhotoPersistanceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDPhotoPersistanceManager.h; sourceTree = "<group>"; };
+		E2E97E9B18B01B7D000550AD /* DDDPhotoPersistanceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDPhotoPersistanceManager.m; sourceTree = "<group>"; };
+		E2E97E9D18B022EB000550AD /* UIImage+UIViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+UIViews.h"; sourceTree = "<group>"; };
+		E2E97E9E18B022EB000550AD /* UIImage+UIViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+UIViews.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E250E0D618AF80B600D1974E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E29077D218B13EEA0079C396 /* QuartzCore.framework in Frameworks */,
+				E250E0DF18AF80B600D1974E /* CoreGraphics.framework in Frameworks */,
+				E250E0E118AF80B600D1974E /* UIKit.framework in Frameworks */,
+				E250E0DD18AF80B600D1974E /* Foundation.framework in Frameworks */,
+				ECC2518F9F994102ACC9CA8A /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E250E0F118AF80B600D1974E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E250E0F618AF80B600D1974E /* XCTest.framework in Frameworks */,
+				E250E0F818AF80B600D1974E /* UIKit.framework in Frameworks */,
+				E250E0F718AF80B600D1974E /* Foundation.framework in Frameworks */,
+				43BFEE77928B4E859045AC0F /* libPods-DoubleDoodleTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E250E0D018AF80B600D1974E = {
+			isa = PBXGroup;
+			children = (
+				E250E0E218AF80B600D1974E /* DoubleDoodle */,
+				E250E0FB18AF80B600D1974E /* DoubleDoodleTests */,
+				E250E0DB18AF80B600D1974E /* Frameworks */,
+				E250E0DA18AF80B600D1974E /* Products */,
+				4667CE8DFFFB4C46AB0DB57F /* Pods-DoubleDoodleTests.xcconfig */,
+				42A0CA88D5CA4AE8846F610C /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		E250E0DA18AF80B600D1974E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E250E0D918AF80B600D1974E /* DoubleDoodle.app */,
+				E250E0F418AF80B600D1974E /* DoubleDoodleTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E250E0DB18AF80B600D1974E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E29077D118B13EEA0079C396 /* QuartzCore.framework */,
+				E250E0DC18AF80B600D1974E /* Foundation.framework */,
+				E250E0DE18AF80B600D1974E /* CoreGraphics.framework */,
+				E250E0E018AF80B600D1974E /* UIKit.framework */,
+				E250E0F518AF80B600D1974E /* XCTest.framework */,
+				619D1BC1F9E84A26BF7A8C45 /* libPods-DoubleDoodleTests.a */,
+				9EFF8470F2D8474AA329C59F /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E250E0E218AF80B600D1974E /* DoubleDoodle */ = {
+			isa = PBXGroup;
+			children = (
+				E250E12218AF8E0300D1974E /* 3rd Party */,
+				E250E10E18AF80EE00D1974E /* Library */,
+				E250E10F18AF811500D1974E /* Managers */,
+				E250E10D18AF80D700D1974E /* Model */,
+				E250E12718AF8E5A00D1974E /* View */,
+				E250E10B18AF80CB00D1974E /* Controller */,
+				E250E0EE18AF80B600D1974E /* Images.xcassets */,
+				E250E0E318AF80B600D1974E /* Supporting Files */,
+			);
+			path = DoubleDoodle;
+			sourceTree = "<group>";
+		};
+		E250E0E318AF80B600D1974E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E250E0EB18AF80B600D1974E /* DDDAppDelegate.h */,
+				E250E0EC18AF80B600D1974E /* DDDAppDelegate.m */,
+				E250E0E418AF80B600D1974E /* DoubleDoodle-Info.plist */,
+				E250E0E518AF80B600D1974E /* InfoPlist.strings */,
+				E250E0E818AF80B600D1974E /* main.m */,
+				E250E0EA18AF80B600D1974E /* DoubleDoodle-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E250E0FB18AF80B600D1974E /* DoubleDoodleTests */ = {
+			isa = PBXGroup;
+			children = (
+				E250E0FC18AF80B600D1974E /* Supporting Files */,
+			);
+			path = DoubleDoodleTests;
+			sourceTree = "<group>";
+		};
+		E250E0FC18AF80B600D1974E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E250E0FD18AF80B600D1974E /* DoubleDoodleTests-Info.plist */,
+				E250E0FE18AF80B600D1974E /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E250E10B18AF80CB00D1974E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E250E12C18AF9D8900D1974E /* Doodle Container VC */,
+				E250E12D18AF9DA200D1974E /* Doodle VC */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E250E10D18AF80D700D1974E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E250E10E18AF80EE00D1974E /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				E2E97EA018B0273B000550AD /* Categories */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		E250E10F18AF811500D1974E /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				E2E97E9A18B01B7D000550AD /* DDDPhotoPersistanceManager.h */,
+				E2E97E9B18B01B7D000550AD /* DDDPhotoPersistanceManager.m */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		E250E12218AF8E0300D1974E /* 3rd Party */ = {
+			isa = PBXGroup;
+			children = (
+				E250E12318AF8E1A00D1974E /* SmoothLineView.h */,
+				E250E12418AF8E1A00D1974E /* SmoothLineView.m */,
+			);
+			path = "3rd Party";
+			sourceTree = "<group>";
+		};
+		E250E12718AF8E5A00D1974E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E250E12818AF8E6C00D1974E /* DDDDoodleView.h */,
+				E250E12918AF8E6C00D1974E /* DDDDoodleView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E250E12C18AF9D8900D1974E /* Doodle Container VC */ = {
+			isa = PBXGroup;
+			children = (
+				E250E11618AF893300D1974E /* DDDDoodleContainerViewController.h */,
+				E250E11718AF893300D1974E /* DDDDoodleContainerViewController.m */,
+			);
+			name = "Doodle Container VC";
+			sourceTree = "<group>";
+		};
+		E250E12D18AF9DA200D1974E /* Doodle VC */ = {
+			isa = PBXGroup;
+			children = (
+				E250E11A18AF8D1000D1974E /* DDDDoodleViewController.h */,
+				E250E11B18AF8D1000D1974E /* DDDDoodleViewController.m */,
+			);
+			name = "Doodle VC";
+			sourceTree = "<group>";
+		};
+		E2E97EA018B0273B000550AD /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				E250E12E18AFB3D000D1974E /* DDDDoodleContainerViewController+DoodleViewTransitions.h */,
+				E250E12F18AFB3D000D1974E /* DDDDoodleContainerViewController+DoodleViewTransitions.m */,
+				E2E97E9D18B022EB000550AD /* UIImage+UIViews.h */,
+				E2E97E9E18B022EB000550AD /* UIImage+UIViews.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E250E0D818AF80B600D1974E /* DoubleDoodle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E250E10518AF80B600D1974E /* Build configuration list for PBXNativeTarget "DoubleDoodle" */;
+			buildPhases = (
+				6B7EFA98A7F3436487AF3318 /* Check Pods Manifest.lock */,
+				E250E0D518AF80B600D1974E /* Sources */,
+				E250E0D618AF80B600D1974E /* Frameworks */,
+				E250E0D718AF80B600D1974E /* Resources */,
+				A473CC1EB30548DDA40325A2 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DoubleDoodle;
+			productName = DoubleDoodle;
+			productReference = E250E0D918AF80B600D1974E /* DoubleDoodle.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E250E0F318AF80B600D1974E /* DoubleDoodleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E250E10818AF80B600D1974E /* Build configuration list for PBXNativeTarget "DoubleDoodleTests" */;
+			buildPhases = (
+				F2C192AB435E4818A81739E6 /* Check Pods Manifest.lock */,
+				E250E0F018AF80B600D1974E /* Sources */,
+				E250E0F118AF80B600D1974E /* Frameworks */,
+				E250E0F218AF80B600D1974E /* Resources */,
+				8E589BDF264E4531A414DAA9 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E250E0FA18AF80B600D1974E /* PBXTargetDependency */,
+			);
+			name = DoubleDoodleTests;
+			productName = DoubleDoodleTests;
+			productReference = E250E0F418AF80B600D1974E /* DoubleDoodleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E250E0D118AF80B600D1974E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = DDD;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Duchy Software";
+				TargetAttributes = {
+					E250E0F318AF80B600D1974E = {
+						TestTargetID = E250E0D818AF80B600D1974E;
+					};
+				};
+			};
+			buildConfigurationList = E250E0D418AF80B600D1974E /* Build configuration list for PBXProject "DoubleDoodle" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E250E0D018AF80B600D1974E;
+			productRefGroup = E250E0DA18AF80B600D1974E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E250E0D818AF80B600D1974E /* DoubleDoodle */,
+				E250E0F318AF80B600D1974E /* DoubleDoodleTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E250E0D718AF80B600D1974E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E250E0E718AF80B600D1974E /* InfoPlist.strings in Resources */,
+				E250E0EF18AF80B600D1974E /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E250E0F218AF80B600D1974E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E250E10018AF80B600D1974E /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6B7EFA98A7F3436487AF3318 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8E589BDF264E4531A414DAA9 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-DoubleDoodleTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A473CC1EB30548DDA40325A2 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F2C192AB435E4818A81739E6 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E250E0D518AF80B600D1974E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E250E13018AFB3D000D1974E /* DDDDoodleContainerViewController+DoodleViewTransitions.m in Sources */,
+				E2E97E9F18B022EB000550AD /* UIImage+UIViews.m in Sources */,
+				E2E97E9C18B01B7D000550AD /* DDDPhotoPersistanceManager.m in Sources */,
+				E250E12518AF8E1A00D1974E /* SmoothLineView.m in Sources */,
+				E250E11818AF893300D1974E /* DDDDoodleContainerViewController.m in Sources */,
+				E250E0E918AF80B600D1974E /* main.m in Sources */,
+				E250E12A18AF8E6C00D1974E /* DDDDoodleView.m in Sources */,
+				E250E11C18AF8D1000D1974E /* DDDDoodleViewController.m in Sources */,
+				E250E0ED18AF80B600D1974E /* DDDAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E250E0F018AF80B600D1974E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E250E13118AFB3D000D1974E /* DDDDoodleContainerViewController+DoodleViewTransitions.m in Sources */,
+				E250E12618AF8E1A00D1974E /* SmoothLineView.m in Sources */,
+				E250E11918AF893300D1974E /* DDDDoodleContainerViewController.m in Sources */,
+				E250E12B18AF8E6C00D1974E /* DDDDoodleView.m in Sources */,
+				E250E11D18AF8D1000D1974E /* DDDDoodleViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E250E0FA18AF80B600D1974E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E250E0D818AF80B600D1974E /* DoubleDoodle */;
+			targetProxy = E250E0F918AF80B600D1974E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E250E0E518AF80B600D1974E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E250E0E618AF80B600D1974E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E250E0FE18AF80B600D1974E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E250E0FF18AF80B600D1974E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E250E10318AF80B600D1974E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E250E10418AF80B600D1974E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E250E10618AF80B600D1974E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 42A0CA88D5CA4AE8846F610C /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DoubleDoodle/DoubleDoodle-Prefix.pch";
+				INFOPLIST_FILE = "DoubleDoodle/DoubleDoodle-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E250E10718AF80B600D1974E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 42A0CA88D5CA4AE8846F610C /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DoubleDoodle/DoubleDoodle-Prefix.pch";
+				INFOPLIST_FILE = "DoubleDoodle/DoubleDoodle-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		E250E10918AF80B600D1974E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4667CE8DFFFB4C46AB0DB57F /* Pods-DoubleDoodleTests.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DoubleDoodle.app/DoubleDoodle";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DoubleDoodle/DoubleDoodle-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "DoubleDoodleTests/DoubleDoodleTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		E250E10A18AF80B600D1974E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4667CE8DFFFB4C46AB0DB57F /* Pods-DoubleDoodleTests.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DoubleDoodle.app/DoubleDoodle";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DoubleDoodle/DoubleDoodle-Prefix.pch";
+				INFOPLIST_FILE = "DoubleDoodleTests/DoubleDoodleTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E250E0D418AF80B600D1974E /* Build configuration list for PBXProject "DoubleDoodle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E250E10318AF80B600D1974E /* Debug */,
+				E250E10418AF80B600D1974E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E250E10518AF80B600D1974E /* Build configuration list for PBXNativeTarget "DoubleDoodle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E250E10618AF80B600D1974E /* Debug */,
+				E250E10718AF80B600D1974E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E250E10818AF80B600D1974E /* Build configuration list for PBXNativeTarget "DoubleDoodleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E250E10918AF80B600D1974E /* Debug */,
+				E250E10A18AF80B600D1974E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E250E0D118AF80B600D1974E /* Project object */;
+}
