@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		43BFEE77928B4E859045AC0F /* libPods-DoubleDoodleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 619D1BC1F9E84A26BF7A8C45 /* libPods-DoubleDoodleTests.a */; };
-		E210670418B15B6C0078911E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E210670318B15B6C0078911E /* Localizable.strings */; };
+		E210670518B15CEF0078911E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E210670718B15CEF0078911E /* Localizable.strings */; };
 		E250E0DD18AF80B600D1974E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E250E0DC18AF80B600D1974E /* Foundation.framework */; };
 		E250E0DF18AF80B600D1974E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E250E0DE18AF80B600D1974E /* CoreGraphics.framework */; };
 		E250E0E118AF80B600D1974E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E250E0E018AF80B600D1974E /* UIKit.framework */; };
@@ -50,7 +50,7 @@
 		4667CE8DFFFB4C46AB0DB57F /* Pods-DoubleDoodleTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoubleDoodleTests.xcconfig"; path = "Pods/Pods-DoubleDoodleTests.xcconfig"; sourceTree = "<group>"; };
 		619D1BC1F9E84A26BF7A8C45 /* libPods-DoubleDoodleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DoubleDoodleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EFF8470F2D8474AA329C59F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		E210670318B15B6C0078911E /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		E210670618B15CEF0078911E /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E250E0D918AF80B600D1974E /* DoubleDoodle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoubleDoodle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E250E0DC18AF80B600D1974E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E250E0DE18AF80B600D1974E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -168,7 +168,7 @@
 				E250E0E518AF80B600D1974E /* InfoPlist.strings */,
 				E250E0E818AF80B600D1974E /* main.m */,
 				E250E0EA18AF80B600D1974E /* DoubleDoodle-Prefix.pch */,
-				E210670318B15B6C0078911E /* Localizable.strings */,
+				E210670718B15CEF0078911E /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -351,7 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E250E0E718AF80B600D1974E /* InfoPlist.strings in Resources */,
-				E210670418B15B6C0078911E /* Localizable.strings in Resources */,
+				E210670518B15CEF0078911E /* Localizable.strings in Resources */,
 				E250E0EF18AF80B600D1974E /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -469,6 +469,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		E210670718B15CEF0078911E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E210670618B15CEF0078911E /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		E250E0E518AF80B600D1974E /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
