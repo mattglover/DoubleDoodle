@@ -27,7 +27,6 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
 
 @property (nonatomic, strong) DDDDoodleViewController *firstDoodleViewController;
 @property (nonatomic, strong) DDDDoodleViewController *secondDoodleViewController;
-
 @property (nonatomic, strong) UIBarButtonItem *savePhotoButton;
 
 @property (nonatomic, assign) BOOL transitionInProgress;
@@ -207,11 +206,15 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
                completion:(void(^)(BOOL finished))completion {
   
   switch (transition) {
-    case TransitionTypeCircle:
+    case TransitionTypeCircle: {
+      DoodleViewAnimationDirection direction = (frontView == self.firstDoodleViewController.doodleView) ? DoodleViewAnimationDirectionAntiClockwise: DoodleViewAnimationDirectionClockwise;
       [self performTransitionCarouselToBackView:backView
                                     toFrontView:frontView
                                        animated:animated
+                                      direction:direction
                                      completion:completion];
+    }
+
       break;
       
     case TransitionTypeSideBySide:

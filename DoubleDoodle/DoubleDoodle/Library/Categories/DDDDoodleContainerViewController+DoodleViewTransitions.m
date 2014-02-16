@@ -21,15 +21,18 @@ static NSTimeInterval const kFromSideBySideDepressScale             = 0.95f;
 - (void)performTransitionCarouselToBackView:(UIView *)toBackView
                                 toFrontView:(UIView *)toFrontView
                                    animated:(BOOL)animated
+                                  direction:(DoodleViewAnimationDirection)animationDirection
                                  completion:(void(^)(BOOL finished))completion {
+  
+  CGFloat shouldRotateAntiClockwiseModifier = animationDirection == DoodleViewAnimationDirectionAntiClockwise ? -1.0 : 1.0;
   
   [UIView animateWithDuration:[self animationDuration:animated]
                         delay:0.0f
                       options:UIViewAnimationOptionCurveEaseIn
                    animations:^{
-                     [toBackView setTransform:CGAffineTransformMakeTranslation(-CGRectGetWidth(toBackView.bounds)/2,
+                     [toBackView setTransform:CGAffineTransformMakeTranslation(shouldRotateAntiClockwiseModifier * -CGRectGetWidth(toBackView.bounds)/2,
                                                                                0)];
-                     [toFrontView setTransform:CGAffineTransformMakeTranslation(CGRectGetWidth(toFrontView.bounds)/2,
+                     [toFrontView setTransform:CGAffineTransformMakeTranslation(shouldRotateAntiClockwiseModifier * CGRectGetWidth(toFrontView.bounds)/2,
                                                                                 0)];
                      toFrontView.alpha = 1.0;
                      
