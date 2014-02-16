@@ -14,7 +14,7 @@ static CGFloat const kDoodleViewFrameInsetY = 70.0f;
 static CGFloat const kDoodleViewOriginPositionY = 20.0f + 44.0f + 10.0f;
 static CGFloat const kDoodleViewLineWidth = 4.0f;
 
-@interface DDDDoodleViewController () <DDDDoodleViewDelegate>
+@interface DDDDoodleViewController () <DDDDoodleViewDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, copy) NSString *xml;
 @property (nonatomic, assign, getter = isDoodleViewEnabled) BOOL doodleViewEnabled;
@@ -91,6 +91,17 @@ static CGFloat const kDoodleViewLineWidth = 4.0f;
 
 - (void)doodleViewSwipeUp:(UISwipeGestureRecognizer *)gesture {
   if(gesture.state == UIGestureRecognizerStateRecognized && [self canClearDoodleView]) {
+    [self presentConfirmClearAlert];
+  }
+}
+
+- (void)presentConfirmClearAlert {
+  [[[UIAlertView alloc] initWithTitle:@"Confirm Clear" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Confirm", nil] show];
+}
+
+#pragma mark - UIAlertView Delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+  if (buttonIndex == 1) {
     [self.doodleView clear];
   }
 }

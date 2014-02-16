@@ -53,26 +53,15 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
 - (void)viewDidLoad {
   [super viewDidLoad];
 
-  [self setupBackgroundGradient];
+  [self setupBackground];
   [self setupChildDoodleViewControllers];
   [self setupTransitionButtons];
   [self presentSavePhotoButtonAnimated:NO];
 }
 
 #pragma mark - Setup
-- (void)setupBackgroundGradient {
-  
-  CAGradientLayer *gradientLayer = [CAGradientLayer layer];
-  gradientLayer.bounds = self.view.bounds;
-  gradientLayer.position = CGPointMake(CGRectGetWidth(self.view.bounds)/2, CGRectGetHeight(self.view.bounds)/2);
-  gradientLayer.colors = @[ (id)[UIColor colorWithWhite:0.95 alpha:1.0].CGColor,
-                              (id)[UIColor colorWithWhite:0.95 alpha:1.0].CGColor,
-                              (id)[UIColor colorWithWhite:0.05 alpha:1.0].CGColor,
-                              (id)[UIColor colorWithWhite:0.05 alpha:1.0].CGColor ];
-  gradientLayer.locations = @[ @(0.0), @(0.5), @(0.5), @(1.0) ];
-  gradientLayer.startPoint = CGPointMake(0.0f, 0.5f);
-  gradientLayer.endPoint = CGPointMake(1.0f, 0.5f);
-  [self.view.layer addSublayer:gradientLayer];
+- (void)setupBackground {
+  self.view.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
 }
 
 - (void)setupChildDoodleViewControllers {
