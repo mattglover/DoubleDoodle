@@ -29,7 +29,6 @@
 		E250E12B18AF8E6C00D1974E /* DDDDoodleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E250E12918AF8E6C00D1974E /* DDDDoodleView.m */; };
 		E250E13018AFB3D000D1974E /* DDDDoodleContainerViewController+DoodleViewTransitions.m in Sources */ = {isa = PBXBuildFile; fileRef = E250E12F18AFB3D000D1974E /* DDDDoodleContainerViewController+DoodleViewTransitions.m */; };
 		E250E13118AFB3D000D1974E /* DDDDoodleContainerViewController+DoodleViewTransitions.m in Sources */ = {isa = PBXBuildFile; fileRef = E250E12F18AFB3D000D1974E /* DDDDoodleContainerViewController+DoodleViewTransitions.m */; };
-		E29077D218B13EEA0079C396 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29077D118B13EEA0079C396 /* QuartzCore.framework */; };
 		E2E97E9C18B01B7D000550AD /* DDDPhotoPersistanceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E97E9B18B01B7D000550AD /* DDDPhotoPersistanceManager.m */; };
 		E2E97E9F18B022EB000550AD /* UIImage+UIViews.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E97E9E18B022EB000550AD /* UIImage+UIViews.m */; };
 		ECC2518F9F994102ACC9CA8A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EFF8470F2D8474AA329C59F /* libPods.a */; };
@@ -87,7 +86,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E29077D218B13EEA0079C396 /* QuartzCore.framework in Frameworks */,
 				E250E0DF18AF80B600D1974E /* CoreGraphics.framework in Frameworks */,
 				E250E0E118AF80B600D1974E /* UIKit.framework in Frameworks */,
 				E250E0DD18AF80B600D1974E /* Foundation.framework in Frameworks */,

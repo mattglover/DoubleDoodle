@@ -13,7 +13,6 @@
 #import "UIImage+UIViews.h"
 #import "DDDPhotoPersistanceManager.h"
 #import "SVProgressHUD.h"
-#import <QuartzCore/QuartzCore.h>
 
 typedef NS_ENUM (NSUInteger, TransitionType) {
   TransitionTypeCircle,
@@ -182,8 +181,6 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
         });
       }];
     });
-  } else {
-    NSLog(@"Action Sheet - Cancel");
   }
 }
 
