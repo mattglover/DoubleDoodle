@@ -12,6 +12,7 @@
 #import "DDDDoodleContainerViewController+DoodleViewTransitions.h"
 #import "UIImage+UIViews.h"
 #import "DDDPhotoPersistanceManager.h"
+#import "SVProgressHUD.h"
 
 typedef NS_ENUM (NSUInteger, TransitionType) {
   TransitionTypeCircle,
@@ -171,9 +172,9 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
       [[DDDPhotoPersistanceManager sharedManager] saveImageToCameraRoll:image completion:^(BOOL success, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
           if (success) {
-            NSLog(@"Image Saved Successfully");
+            [SVProgressHUD showSuccessWithStatus:@"Image Saved"];
           } else {
-            NSLog(@"%@", error);
+            [SVProgressHUD showErrorWithStatus:@"Error saving Image"];
           }
         });
       }];

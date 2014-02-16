@@ -4,11 +4,14 @@ PODS:
   - Kiwi/XCTest (2.2.3):
     - Kiwi/ARC
     - Kiwi/NonARC
+  - SVProgressHUD (1.0)
 
 DEPENDENCIES:
   - Kiwi/XCTest
+  - SVProgressHUD (~> 1.0)
 
 SPEC CHECKSUMS:
   Kiwi: 04c51e880831d291748ec702d42c4101f7eb95c9
+  SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1
 
 COCOAPODS: 0.29.0
