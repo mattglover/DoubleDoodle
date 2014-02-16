@@ -11,7 +11,6 @@
 #import "DDDDoodleView.h"
 #import "DDDDoodleContainerViewController+DoodleViewTransitions.h"
 #import "UIImage+UIViews.h"
-
 #import "DDDPhotoPersistanceManager.h"
 
 typedef NS_ENUM (NSUInteger, TransitionType) {
@@ -20,7 +19,7 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
   TransitionTypeFromSideBySide
 };
 
-@interface DDDDoodleContainerViewController () <DDDDoodleViewControllerDelegate>
+@interface DDDDoodleContainerViewController () <DDDDoodleViewControllerDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, copy) NSString *xml;
 
@@ -38,7 +37,6 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
 #pragma mark - Initializers
 // Should use designated initializer | initWithXML: |
 - (id)init {
-  NSLog(@"Should use designated initializer initWithXML:");
   return [self initWithXML:@""];
 }
 
@@ -67,14 +65,14 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
   self.firstDoodleViewController = [[DDDDoodleViewController alloc] initWithXML:@"" withDelegate:self];
   self.secondDoodleViewController= [[DDDDoodleViewController alloc] initWithXML:@"x" withDelegate:self];
   
-  // Adding to Child View Controllers
+  // Adding Child View Controllers
   [self.firstDoodleViewController willMoveToParentViewController:self];
   [self.secondDoodleViewController willMoveToParentViewController:self];
   
   [self addChildViewController:self.firstDoodleViewController];
   [self addChildViewController:self.secondDoodleViewController];
   
-  // Apply a transform to the views
+  // Setup initial view - i.e. Apply a transform to the views (send backView to the back)
   [self performTransition:TransitionTypeCircle
                 frontView:self.firstDoodleViewController.doodleView
                  backView:self.secondDoodleViewController.doodleView
@@ -100,9 +98,8 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
 #pragma mark - Save Photo Bar Button Item
 - (void)presentSavePhotoButtonAnimated:(BOOL)animated {
   if (!self.savePhotoButton) {
-    self.savePhotoButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(savePhoto:)];
+    self.savePhotoButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(savePhotoButtonTapped:)];
   }
-  
   [self.navigationItem setRightBarButtonItem:self.savePhotoButton animated:animated];
 }
 
@@ -140,28 +137,17 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
   }];
 }
 
-- (void)savePhoto:(UIBarButtonItem *)sender {
+- (void)savePhotoButtonTapped:(UIBarButtonItem *)sender {
   
-  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-    
-    UIImage *image = [UIImage imageWithView:[self frontMostDoodleViewController].doodleView];
-    
-    [[DDDPhotoPersistanceManager sharedManager] saveImageToCameraRoll:image completion:^(BOOL success, NSError *error) {
-      dispatch_async(dispatch_get_main_queue(), ^{
-        if (success) {
-          NSLog(@"Image Saved Successfully");
-        } else {
-          NSLog(@"%@", error);
-        }
-      });
-    }];
-  });
+  [[[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Save to Camera Roll" otherButtonTitles:nil] showInView:self.view];
 }
 
 #pragma mark - DDDDoodleViewControllerDelegate
 - (void)didSelectDoodleViewController:(DDDDoodleViewController *)controller {
   self.transitionInProgress = YES;
   
+  // User has tapped on a DoodleView
+  // If we are currently displaying sideBySide then dispatch - TransitionTypeFromSideBySide
   if ([self isCurrentlySideBySideView]) {
     DDDDoodleView *toBackView = (controller == self.firstDoodleViewController) ? self.secondDoodleViewController.doodleView : self.firstDoodleViewController.doodleView;
     [self performTransition:TransitionTypeFromSideBySide
@@ -174,8 +160,27 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
   }
 }
 
-- (BOOL)isCurrentlySideBySideView {
-  return [self.firstDoodleViewController isDoodleViewTransformed] && [self.secondDoodleViewController isDoodleViewTransformed];
+#pragma mark - UIActionSheet Delegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+  
+  if (buttonIndex == 0) {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+      
+      UIImage *image = [UIImage imageWithView:[self frontMostDoodleViewController].doodleView];
+      
+      [[DDDPhotoPersistanceManager sharedManager] saveImageToCameraRoll:image completion:^(BOOL success, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+          if (success) {
+            NSLog(@"Image Saved Successfully");
+          } else {
+            NSLog(@"%@", error);
+          }
+        });
+      }];
+    });
+  } else {
+    NSLog(@"Action Sheet - Cancel");
+  }
 }
 
 #pragma mark - Transition Dispatcher
@@ -218,6 +223,11 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
   }
   
   return frontMostDoodleViewController;
+}
+
+#pragma mark - Private Helper - Currently Displaying Side by Side
+- (BOOL)isCurrentlySideBySideView {
+  return [self.firstDoodleViewController isDoodleViewTransformed] && [self.secondDoodleViewController isDoodleViewTransformed];
 }
 
 @end
