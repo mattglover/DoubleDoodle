@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  DoubleDoodle
+
+  Created by Matt Glover on 16/02/2014.
+  Copyright (c) 2014 Duchy Software. All rights reserved.
+*/
+
+"OK"                  = "OK";
+"Cancel"              = "Cancel";
+"Error"               = "Error";
+"Confirm"             = "BANANA";
+
+"Confirm Clear"       = "Confirm Clear";
+
+"Save to Camera Roll" = "Save to Camera Roll";
+"Image Saved"         = "Image Saved";
+
+"Save Image Error - Unknown"        = "There was a problem saving your image.";
+"Save Image Error - No Permission"  = "There was a problem saving your image.\n\nPlease check your Settings\n Privacy -> Photos";
