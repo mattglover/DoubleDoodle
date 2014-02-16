@@ -55,6 +55,7 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
   [self setupBackground];
   [self setupChildDoodleViewControllers];
   [self setupTransitionButtons];
+  
   [self presentSavePhotoButtonAnimated:NO];
 }
 
@@ -155,12 +156,15 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
   
   // User has tapped on a DoodleView
   // If we are currently displaying sideBySide then dispatch - TransitionTypeFromSideBySide
-  if ([self isCurrentlySideBySideView]) {
+  if ([self isCurrentlySideBySide]) {
     DDDDoodleView *toBackView = (controller == self.firstDoodleViewController) ? self.secondDoodleViewController.doodleView : self.firstDoodleViewController.doodleView;
+    
     [self performTransition:TransitionTypeFromSideBySide
                   frontView:controller.doodleView
-                   backView:toBackView animated:YES
+                   backView:toBackView
+                   animated:YES
                  completion:^(BOOL finished) {
+                   
       [self presentSavePhotoButtonAnimated:YES];
       self.transitionInProgress = NO;
     }];
@@ -178,7 +182,7 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
       [[DDDPhotoPersistanceManager sharedManager] saveImageToCameraRoll:image completion:^(BOOL success, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
           if (success) {
-            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Image Saved", nil)];
+            [self handleSaveImageSuccess];
           } else {
             [self handleSaveImageError:error];
           }
@@ -186,6 +190,10 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
       }];
     });
   }
+}
+
+- (void)handleSaveImageSuccess {
+  [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Image Saved", nil)];
 }
 
 - (void)handleSaveImageError:(NSError *)error {
@@ -199,6 +207,7 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
 }
 
 #pragma mark - Transition Dispatcher
+// All DoodleView Transitions for this Container View Controller go through this Method
 - (void)performTransition:(TransitionType)transition
                 frontView:(DDDDoodleView *)frontView
                  backView:(DDDDoodleView *)backView
@@ -236,7 +245,7 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
 - (DDDDoodleViewController *)frontMostDoodleViewController {
   
   DDDDoodleViewController *frontMostDoodleViewController;
-  if (![self isCurrentlySideBySideView]) {
+  if (![self isCurrentlySideBySide]) {
     frontMostDoodleViewController = [self.firstDoodleViewController isDoodleViewTransformed] ? self.secondDoodleViewController : self.firstDoodleViewController;
   }
   
@@ -244,7 +253,7 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
 }
 
 #pragma mark - Private Helper - Currently Displaying Side by Side
-- (BOOL)isCurrentlySideBySideView {
+- (BOOL)isCurrentlySideBySide {
   return [self.firstDoodleViewController isDoodleViewTransformed] && [self.secondDoodleViewController isDoodleViewTransformed];
 }
 
