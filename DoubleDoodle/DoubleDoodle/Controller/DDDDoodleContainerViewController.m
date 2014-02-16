@@ -141,7 +141,12 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
 }
 
 - (void)savePhotoButtonTapped:(UIBarButtonItem *)sender {
-  [[[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Save to Camera Roll" otherButtonTitles:nil] showInView:self.view];
+  [[[UIActionSheet alloc] initWithTitle:nil
+                               delegate:self
+                      cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                 destructiveButtonTitle:NSLocalizedString(@"Save to Camera Roll", nil)
+                      otherButtonTitles:nil]
+   showInView:self.view];
 }
 
 #pragma mark - DDDDoodleViewControllerDelegate
@@ -173,7 +178,7 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
       [[DDDPhotoPersistanceManager sharedManager] saveImageToCameraRoll:image completion:^(BOOL success, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
           if (success) {
-            [SVProgressHUD showSuccessWithStatus:@"Image Saved"];
+            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Image Saved", nil)];
           } else {
             [self handleSaveImageError:error];
           }
@@ -184,8 +189,13 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
 }
 
 - (void)handleSaveImageError:(NSError *)error {
-  NSString *errorMessage = (error.code == -3310) ? @"There was a problem saving your image.\n\nPlease check your Settings\n Privacy -> Photos" : @"There was a problem saving your image." ;
-  [[[UIAlertView alloc] initWithTitle:@"Error" message:errorMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+  NSString *errorMessage = (error.code == -3310) ? NSLocalizedString(@"Save Image Error - No Permission", nil) : NSLocalizedString(@"Save Image Error - Unknown", nil) ;
+  [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil)
+                              message:errorMessage
+                             delegate:nil
+                    cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                    otherButtonTitles:nil]
+   show];
 }
 
 #pragma mark - Transition Dispatcher

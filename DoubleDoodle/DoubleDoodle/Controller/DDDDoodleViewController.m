@@ -96,7 +96,11 @@ static CGFloat const kDoodleViewLineWidth = 4.0f;
 }
 
 - (void)presentConfirmClearAlert {
-  [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Confirm Clear", nil) message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"Confirm", nil), nil] show];
+  [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Confirm Clear", nil)
+                              message:nil delegate:self
+                    cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                    otherButtonTitles:NSLocalizedString(@"Confirm", nil), nil]
+   show];
 }
 
 #pragma mark - UIAlertView Delegate

@@ -51,6 +51,8 @@
 		619D1BC1F9E84A26BF7A8C45 /* libPods-DoubleDoodleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DoubleDoodleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EFF8470F2D8474AA329C59F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E210670618B15CEF0078911E /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E210670818B15DBB0078911E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E210670918B15DBB0078911E /* es */ = {isa = PBXFileReference; lastKnownFileType = file; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E250E0D918AF80B600D1974E /* DoubleDoodle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoubleDoodle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E250E0DC18AF80B600D1974E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E250E0DE18AF80B600D1974E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -333,6 +335,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				es,
 			);
 			mainGroup = E250E0D018AF80B600D1974E;
 			productRefGroup = E250E0DA18AF80B600D1974E /* Products */;
@@ -473,6 +476,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				E210670618B15CEF0078911E /* en */,
+				E210670918B15DBB0078911E /* es */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -481,6 +485,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				E250E0E618AF80B600D1974E /* en */,
+				E210670818B15DBB0078911E /* es */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
