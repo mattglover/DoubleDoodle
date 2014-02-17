@@ -6,6 +6,8 @@
   Copyright (c) 2014 Duchy Software. All rights reserved.
 */
 
+"Double Doodle"       = "DOUBLE DOODLE";
+
 "OK"                  = "OK";
 "Cancel"              = "Cancel";
 "Error"               = "Error";

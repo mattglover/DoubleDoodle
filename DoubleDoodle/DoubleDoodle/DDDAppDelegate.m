@@ -16,9 +16,11 @@
   
   DDDDoodleContainerViewController *doodleContainerViewController = [[DDDDoodleContainerViewController alloc] initWithXML:@""];
   UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:doodleContainerViewController];
-  [self.window setRootViewController:navigationController];
+  navigationController.navigationBar.tintColor = [UIColor blackColor];
   
+  [self.window setRootViewController:navigationController];
   [self.window makeKeyAndVisible];
+  
   return YES;
 }
 

@@ -52,6 +52,9 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
 - (void)viewDidLoad {
   [super viewDidLoad];
 
+  self.title = NSLocalizedString(@"Double Doodle", nil);
+  self.view.tintColor = [UIColor blackColor];
+  
   [self setupBackground];
   [self setupChildDoodleViewControllers];
   [self setupTransitionButtons];
@@ -114,6 +117,7 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
 #pragma mark - UIBarButtonItem Listeners
 - (void)swapViews:(UIBarButtonItem *)sender {
   self.transitionInProgress = YES;
+  [self presentSavePhotoButtonAnimated:YES];
   
   DDDDoodleView *toBackView = [self frontMostDoodleViewController] == self.firstDoodleViewController ? self.firstDoodleViewController.doodleView : self.secondDoodleViewController.doodleView;
   DDDDoodleView *toFrontView = [self frontMostDoodleViewController] == self.firstDoodleViewController ? self.secondDoodleViewController.doodleView : self.firstDoodleViewController.doodleView;
