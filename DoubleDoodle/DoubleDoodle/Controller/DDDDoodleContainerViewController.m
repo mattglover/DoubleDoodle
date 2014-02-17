@@ -166,12 +166,12 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
 }
 
 - (void)savePhotoButtonTapped:(UIBarButtonItem *)sender {
-  [[[UIActionSheet alloc] initWithTitle:nil
+  UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
                                delegate:self
                       cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
                  destructiveButtonTitle:NSLocalizedString(@"Save to Camera Roll", nil)
-                      otherButtonTitles:nil]
-   showInView:self.view];
+                      otherButtonTitles:nil];
+  [actionSheet showFromBarButtonItem:sender animated:YES];
 }
 
 #pragma mark - RotatingDiscView Delegate
