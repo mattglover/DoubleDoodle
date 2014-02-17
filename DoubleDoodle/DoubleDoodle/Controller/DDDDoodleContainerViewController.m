@@ -154,7 +154,7 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
    showInView:self.view];
 }
 
-#pragma mark - DDDDoodleViewControllerDelegate
+#pragma mark - DDDDoodleViewController Delegate
 - (void)didSelectDoodleViewController:(DDDDoodleViewController *)controller {
   self.transitionInProgress = YES;
   
@@ -250,7 +250,7 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
   
   DDDDoodleViewController *frontMostDoodleViewController;
   if (![self isCurrentlySideBySide]) {
-    frontMostDoodleViewController = [self.firstDoodleViewController isDoodleViewTransformed] ? self.secondDoodleViewController : self.firstDoodleViewController;
+    frontMostDoodleViewController = [self.firstDoodleViewController isDoodleViewEditable] ? self.firstDoodleViewController : self.secondDoodleViewController;
   }
   
   return frontMostDoodleViewController;
@@ -258,7 +258,7 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
 
 #pragma mark - Private Helper - Currently Displaying Side by Side
 - (BOOL)isCurrentlySideBySide {
-  return [self.firstDoodleViewController isDoodleViewTransformed] && [self.secondDoodleViewController isDoodleViewTransformed];
+  return ![self.firstDoodleViewController isDoodleViewEditable] && ![self.secondDoodleViewController isDoodleViewEditable];
 }
 
 @end

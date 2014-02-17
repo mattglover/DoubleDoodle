@@ -14,7 +14,7 @@ static CGFloat const kDoodleViewFrameInsetY = 70.0f;
 static CGFloat const kDoodleViewOriginPositionY = 20.0f + 44.0f + 10.0f;
 static CGFloat const kDoodleViewLineWidth = 4.0f;
 
-@interface DDDDoodleViewController () <DDDDoodleViewDelegate, UIAlertViewDelegate>
+@interface DDDDoodleViewController () <DDDDoodleViewDelegate, UIAlertViewDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, copy) NSString *xml;
 @property (nonatomic, assign, getter = isDoodleViewEnabled) BOOL doodleViewEnabled;
@@ -73,6 +73,7 @@ static CGFloat const kDoodleViewLineWidth = 4.0f;
   UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doodleViewTapped:)];
   UISwipeGestureRecognizer *swipeUpGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(doodleViewSwipeUp:)];
   [swipeUpGesture setDirection:UISwipeGestureRecognizerDirectionUp];
+  [swipeUpGesture setDelegate:self];
   
   [doodleView addGestureRecognizer:tapGesture];
   [doodleView addGestureRecognizer:swipeUpGesture];
@@ -80,12 +81,12 @@ static CGFloat const kDoodleViewLineWidth = 4.0f;
 
 #pragma mark - DDDDoodleView Delegate
 - (BOOL)canDrawOnDoodleView:(DDDDoodleView *)doodleView {
-  return ![self isDoodleViewTransformed];
+  return [self isDoodleViewEditable];
 }
 
 #pragma mark - Transform Helper
-- (BOOL)isDoodleViewTransformed {
-  return !CGAffineTransformIsIdentity(self.doodleView.transform);
+- (BOOL)isDoodleViewEditable {
+  return CGAffineTransformIsIdentity(self.doodleView.transform);
 }
 
 #pragma mark - Tap Gesture Recogniser
@@ -109,6 +110,16 @@ static CGFloat const kDoodleViewLineWidth = 4.0f;
    show];
 }
 
+#pragma mark - UIGestureRecogniser Delegate
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+
+  if ([self isDoodleViewEditable]) {
+    return NO;
+  }
+  
+  return YES;
+}
+
 #pragma mark - UIAlertView Delegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
   if (buttonIndex == 1) {
@@ -127,7 +138,7 @@ static CGFloat const kDoodleViewLineWidth = 4.0f;
 
 - (BOOL)canClearDoodleView {
   // Can only clear if view is not in Doodleable state
-  return [self isDoodleViewTransformed];
+  return ![self isDoodleViewEditable];
 }
 
 @end
