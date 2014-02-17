@@ -11,6 +11,9 @@
 		E210670518B15CEF0078911E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E210670718B15CEF0078911E /* Localizable.strings */; };
 		E213BAB018B2A0CD00C44FB1 /* RotatingTwoColorDiscView.m in Sources */ = {isa = PBXBuildFile; fileRef = E213BAAF18B2A0CD00C44FB1 /* RotatingTwoColorDiscView.m */; };
 		E213BAB618B2BD5500C44FB1 /* TwoColorTwinPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = E213BAB518B2BD5500C44FB1 /* TwoColorTwinPanelView.m */; };
+		E213BABB18B2C9A300C44FB1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E213BAB818B2C9A300C44FB1 /* Default-568h@2x.png */; };
+		E213BABC18B2C9A300C44FB1 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E213BAB918B2C9A300C44FB1 /* Default.png */; };
+		E213BABD18B2C9A300C44FB1 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E213BABA18B2C9A300C44FB1 /* Default@2x.png */; };
 		E250E0DD18AF80B600D1974E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E250E0DC18AF80B600D1974E /* Foundation.framework */; };
 		E250E0DF18AF80B600D1974E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E250E0DE18AF80B600D1974E /* CoreGraphics.framework */; };
 		E250E0E118AF80B600D1974E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E250E0E018AF80B600D1974E /* UIKit.framework */; };
@@ -67,6 +70,9 @@
 		E213BAAF18B2A0CD00C44FB1 /* RotatingTwoColorDiscView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatingTwoColorDiscView.m; sourceTree = "<group>"; };
 		E213BAB418B2BD5500C44FB1 /* TwoColorTwinPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoColorTwinPanelView.h; sourceTree = "<group>"; };
 		E213BAB518B2BD5500C44FB1 /* TwoColorTwinPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoColorTwinPanelView.m; sourceTree = "<group>"; };
+		E213BAB818B2C9A300C44FB1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		E213BAB918B2C9A300C44FB1 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		E213BABA18B2C9A300C44FB1 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		E250E0D918AF80B600D1974E /* DoubleDoodle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoubleDoodle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E250E0DC18AF80B600D1974E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E250E0DE18AF80B600D1974E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -142,6 +148,16 @@
 				E213BAAF18B2A0CD00C44FB1 /* RotatingTwoColorDiscView.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		E213BAB718B2C73800C44FB1 /* LaunchImages */ = {
+			isa = PBXGroup;
+			children = (
+				E213BAB818B2C9A300C44FB1 /* Default-568h@2x.png */,
+				E213BAB918B2C9A300C44FB1 /* Default.png */,
+				E213BABA18B2C9A300C44FB1 /* Default@2x.png */,
+			);
+			name = LaunchImages;
 			sourceTree = "<group>";
 		};
 		E250E0D018AF80B600D1974E = {
@@ -307,6 +323,7 @@
 		E29283C218B18EEA00DC0809 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E213BAB718B2C73800C44FB1 /* LaunchImages */,
 				E29283C318B18EEE00DC0809 /* AppIcons */,
 			);
 			path = Images;
@@ -424,11 +441,14 @@
 				E29283D318B18F0400DC0809 /* AppIcon152.png in Resources */,
 				E29283D218B18F0400DC0809 /* AppIcon120.png in Resources */,
 				E29283CC18B18F0400DC0809 /* AppIcon29.png in Resources */,
+				E213BABB18B2C9A300C44FB1 /* Default-568h@2x.png in Resources */,
 				E210670518B15CEF0078911E /* Localizable.strings in Resources */,
+				E213BABC18B2C9A300C44FB1 /* Default.png in Resources */,
 				E250E0EF18AF80B600D1974E /* Images.xcassets in Resources */,
 				E29283D118B18F0400DC0809 /* AppIcon80.png in Resources */,
 				E29283CF18B18F0400DC0809 /* AppIcon60.png in Resources */,
 				E29283CE18B18F0400DC0809 /* AppIcon58.png in Resources */,
+				E213BABD18B2C9A300C44FB1 /* Default@2x.png in Resources */,
 				E29283D018B18F0400DC0809 /* AppIcon76.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -654,7 +674,6 @@
 			baseConfigurationReference = 42A0CA88D5CA4AE8846F610C /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DoubleDoodle/DoubleDoodle-Prefix.pch";
 				INFOPLIST_FILE = "DoubleDoodle/DoubleDoodle-Info.plist";
@@ -670,7 +689,6 @@
 			baseConfigurationReference = 42A0CA88D5CA4AE8846F610C /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DoubleDoodle/DoubleDoodle-Prefix.pch";
 				INFOPLIST_FILE = "DoubleDoodle/DoubleDoodle-Info.plist";
