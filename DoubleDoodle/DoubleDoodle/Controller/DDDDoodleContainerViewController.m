@@ -13,6 +13,7 @@
 #import "UIImage+UIViews.h"
 #import "DDDPhotoPersistanceManager.h"
 #import "SVProgressHUD.h"
+#import "RotatingTwoColorDiscView.h"
 
 typedef NS_ENUM (NSUInteger, TransitionType) {
   TransitionTypeCircle,
@@ -20,12 +21,14 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
   TransitionTypeFromSideBySide
 };
 
-@interface DDDDoodleContainerViewController () <DDDDoodleViewControllerDelegate, UIActionSheetDelegate>
+@interface DDDDoodleContainerViewController () <DDDDoodleViewControllerDelegate, RotatingTwoColorDiscViewDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, copy) NSString *xml;
 
 @property (nonatomic, strong) DDDDoodleViewController *firstDoodleViewController;
 @property (nonatomic, strong) DDDDoodleViewController *secondDoodleViewController;
+
+@property (nonatomic, strong) RotatingTwoColorDiscView *swapViewsButton;
 @property (nonatomic, strong) UIBarButtonItem *savePhotoButton;
 
 @property (nonatomic, assign) BOOL transitionInProgress;
@@ -57,14 +60,15 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
   
   [self setupBackground];
   [self setupChildDoodleViewControllers];
-  [self setupTransitionButtons];
   
+  [self setupSwapViewsButton];
+  [self setupSideBySideViewsButton];
   [self presentSavePhotoButtonAnimated:NO];
 }
 
 #pragma mark - Setup
 - (void)setupBackground {
-  self.view.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
+  self.view.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1.0];
 }
 
 - (void)setupChildDoodleViewControllers {
@@ -96,16 +100,26 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
   [self.secondDoodleViewController didMoveToParentViewController:self];
 }
 
-- (void)setupTransitionButtons {
-  UIBarButtonItem *swapViewsButton  = [[UIBarButtonItem alloc] initWithTitle:@"Sw" style:UIBarButtonItemStyleBordered target:self action:@selector(swapViews:)];
-  UIBarButtonItem *sideBySideButton = [[UIBarButtonItem alloc] initWithTitle:@"Sd" style:UIBarButtonItemStyleBordered target:self action:@selector(sideBySideViews:)];
-  [self.navigationItem setLeftBarButtonItems:@[ swapViewsButton, sideBySideButton]];
+- (void)setupSwapViewsButton {
+  self.swapViewsButton = [[RotatingTwoColorDiscView alloc] initWithFrame:CGRectMake(30, CGRectGetHeight(self.view.frame) - 60, 50, 50)];
+  self.swapViewsButton.delegate = self;
+  [self.view addSubview:self.swapViewsButton];
+}
+
+- (void)setupSideBySideViewsButton {
+  UIBarButtonItem *sideBySideButton = [[UIBarButtonItem alloc] initWithTitle:@"Sd"
+                                                                       style:UIBarButtonItemStyleBordered
+                                                                      target:self
+                                                                      action:@selector(sideBySideViews:)];
+  [self.navigationItem setLeftBarButtonItems:@[ sideBySideButton ]];
 }
 
 #pragma mark - Save Photo Bar Button Item
 - (void)presentSavePhotoButtonAnimated:(BOOL)animated {
   if (!self.savePhotoButton) {
-    self.savePhotoButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(savePhotoButtonTapped:)];
+    self.savePhotoButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                                         target:self
+                                                                         action:@selector(savePhotoButtonTapped:)];
   }
   [self.navigationItem setRightBarButtonItem:self.savePhotoButton animated:animated];
 }
@@ -114,13 +128,18 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
   [self.navigationItem setRightBarButtonItem:nil animated:animated];
 }
 
-#pragma mark - UIBarButtonItem Listeners
-- (void)swapViews:(UIBarButtonItem *)sender {
+#pragma mark - Swap View
+- (void)swapViews:(RotatingTwoColorDiscView *)discView {
   self.transitionInProgress = YES;
   [self presentSavePhotoButtonAnimated:YES];
   
   DDDDoodleView *toBackView = [self frontMostDoodleViewController] == self.firstDoodleViewController ? self.firstDoodleViewController.doodleView : self.secondDoodleViewController.doodleView;
   DDDDoodleView *toFrontView = [self frontMostDoodleViewController] == self.firstDoodleViewController ? self.secondDoodleViewController.doodleView : self.firstDoodleViewController.doodleView;
+  
+  RotatingDiscViewDirection direction = [self frontMostDoodleViewController] == self.firstDoodleViewController ? RotatingDiscViewDirectionAntiClockwise : RotatingDiscViewDirectionClockwise;
+  [discView animateWithDuration:DDDDoodleContainerViewControllerDefaultAnimationDuration
+                      direction:direction
+                  withCompleton:nil];
   
   [self performTransition:TransitionTypeCircle
                 frontView:toFrontView
@@ -131,6 +150,7 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
   }];
 }
 
+#pragma mark - UIBarButtonItem Listeners
 - (void)sideBySideViews:(UIBarButtonItem *)sender {
   self.transitionInProgress = YES;
   
@@ -152,6 +172,13 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
                  destructiveButtonTitle:NSLocalizedString(@"Save to Camera Roll", nil)
                       otherButtonTitles:nil]
    showInView:self.view];
+}
+
+#pragma mark - RotatingDiscView Delegate
+- (void)didSelectRotatingDiscView:(RotatingTwoColorDiscView *)view {
+  if(!self.transitionInProgress && ![self isCurrentlySideBySide]) {
+     [self swapViews:view];
+  }
 }
 
 #pragma mark - DDDDoodleViewController Delegate

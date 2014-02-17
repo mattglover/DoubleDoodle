@@ -8,7 +8,7 @@
 
 #import "DDDDoodleContainerViewController+DoodleViewTransitions.h"
 
-static NSTimeInterval const kDefaultAnimationDuration = 0.4f;
+NSTimeInterval const DDDDoodleContainerViewControllerDefaultAnimationDuration = 0.6f;
 static CGFloat        const kTransformScale           = 0.5f;
 static CGFloat        const kToBackViewAlpha          = 0.5f;
 static CGFloat        const kInterDoodleViewSpacing   = 6.0f;
@@ -26,7 +26,7 @@ static NSTimeInterval const kFromSideBySideDepressScale             = 0.95f;
   
   CGFloat shouldRotateAntiClockwiseModifier = animationDirection == DoodleViewAnimationDirectionAntiClockwise ? -1.0 : 1.0;
   
-  [UIView animateWithDuration:[self animationDuration:animated]
+  [UIView animateWithDuration:[self animationDuration:animated]/2
                         delay:0.0f
                       options:UIViewAnimationOptionCurveEaseIn
                    animations:^{
@@ -40,7 +40,7 @@ static NSTimeInterval const kFromSideBySideDepressScale             = 0.95f;
                      
                      [self.view bringSubviewToFront:toFrontView];
                      
-                     [UIView animateWithDuration:[self animationDuration:animated]
+                     [UIView animateWithDuration:[self animationDuration:animated]/2
                                            delay:0.0f
                                          options:UIViewAnimationOptionCurveEaseOut
                                       animations:^{
@@ -124,7 +124,7 @@ static NSTimeInterval const kFromSideBySideDepressScale             = 0.95f;
 
 #pragma mark - Private Helper - Animation Duration
 - (NSTimeInterval)animationDuration:(BOOL)animated {
-  return animated ? kDefaultAnimationDuration : 0.0f;
+  return animated ? DDDDoodleContainerViewControllerDefaultAnimationDuration : 0.0f;
 }
 
 @end

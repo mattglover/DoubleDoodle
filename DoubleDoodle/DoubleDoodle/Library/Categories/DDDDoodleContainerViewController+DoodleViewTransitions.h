@@ -8,6 +8,8 @@
 
 #import "DDDDoodleContainerViewController.h"
 
+extern NSTimeInterval const DDDDoodleContainerViewControllerDefaultAnimationDuration;
+
 typedef NS_ENUM(NSInteger, DoodleViewAnimationDirection) {
   DoodleViewAnimationDirectionNoneSpecified,
   DoodleViewAnimationDirectionClockwise,
