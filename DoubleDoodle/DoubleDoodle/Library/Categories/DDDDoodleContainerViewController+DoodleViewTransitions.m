@@ -8,7 +8,8 @@
 
 #import "DDDDoodleContainerViewController+DoodleViewTransitions.h"
 
-NSTimeInterval const DDDDoodleContainerViewControllerDefaultAnimationDuration = 0.6f;
+NSTimeInterval const DDDDoodleContainerViewControllerDefaultAnimationDuration = 0.8f;
+
 static CGFloat        const kTransformScale           = 0.5f;
 static CGFloat        const kToBackViewAlpha          = 0.5f;
 static CGFloat        const kInterDoodleViewSpacing   = 6.0f;

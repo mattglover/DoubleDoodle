@@ -9,12 +9,13 @@
 #import "RotatingTwoColorDiscView.h"
 #import <QuartzCore/QuartzCore.h>
 
-static CGFloat const k180Degress = (180 * M_PI / 180);
 static NSString * const kTranformKeyPath = @"transform.rotation";
+static CGFloat const k180Degress = (180 * M_PI / 180);
 static CGFloat const kDiskRectInsetDelta = 10.0f; // allows for smaller disc whilst maintain a larger hitspot for view
 
 @interface RotatingTwoColorDiscView ()
 @property (nonatomic, strong) CALayer *rotatingLayer;
+@property (nonatomic, strong) CAGradientLayer *dualColorDisc;
 @property (nonatomic, assign, getter = isAnimating) BOOL animating;
 @property (nonatomic, copy) RotatingDiscViewCompletionBlock animationCompletionBlock;
 @end
@@ -22,41 +23,45 @@ static CGFloat const kDiskRectInsetDelta = 10.0f; // allows for smaller disc whi
 @implementation RotatingTwoColorDiscView
 
 - (id)initWithFrame:(CGRect)frame {
+  return [self initWithFrame:frame firstColor:[UIColor blackColor] secondColor:[UIColor whiteColor]];
+}
+
+- (id)initWithFrame:(CGRect)frame firstColor:(UIColor *)firstColor secondColor:(UIColor *)secondColor {
   if (self = [super initWithFrame:frame]) {
-    [self initRotatingLayer];
+    [self initRotatingLayerWithFirstColor:firstColor secondColor:secondColor];
     [self setupGestureRecogniser];
   }
   return self;
 }
 
 #pragma mark - Setup
-- (void)initRotatingLayer {
+- (void)initRotatingLayerWithFirstColor:(UIColor *)firstColor secondColor:(UIColor *)secondColor {
   
   _rotatingLayer = [CALayer layer];
   _rotatingLayer.bounds = self.bounds;
   _rotatingLayer.position = CGPointMake(CGRectGetWidth(self.bounds)/2, CGRectGetHeight(self.bounds)/2);
   _rotatingLayer.masksToBounds = NO;
   
-  CAGradientLayer *dualColorDisc = [self blackWhiteDisc];
-  [_rotatingLayer addSublayer:dualColorDisc];
+  self.dualColorDisc = [self discWithFirstColor:firstColor secondColor:secondColor];
+  [_rotatingLayer addSublayer:self.dualColorDisc];
   
   [self.layer addSublayer:_rotatingLayer];
 }
 
-- (CAGradientLayer *)blackWhiteDisc {
+- (CAGradientLayer *)discWithFirstColor:(UIColor *)firstColor secondColor:(UIColor *)secondColor {
   
   CALayer *discMask = [self discMask];
   
-  CAGradientLayer *gradient = [CAGradientLayer layer];
-  gradient.bounds = discMask.bounds;
-  gradient.position = discMask.position;
-  gradient.colors = @[ (id)[UIColor blackColor].CGColor, (id)[UIColor blackColor].CGColor, (id)[UIColor whiteColor].CGColor, (id)[UIColor whiteColor].CGColor ];
-  gradient.locations = @[ @(0.0), @(0.5), @(0.5), @(1.0) ];
-  gradient.startPoint = CGPointMake(0.0f, 0.0f);
-  gradient.endPoint = CGPointMake(1.0f, 1.0f);
-  gradient.mask = discMask;
+  CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+  gradientLayer.bounds = discMask.bounds;
+  gradientLayer.position = discMask.position;
+  gradientLayer.colors = @[ (id)[UIColor blackColor].CGColor, (id)[UIColor blackColor].CGColor, (id)[UIColor whiteColor].CGColor, (id)[UIColor whiteColor].CGColor ];
+  gradientLayer.locations = @[ @(0.0), @(0.5), @(0.5), @(1.0) ];
+  gradientLayer.startPoint = CGPointMake(0.0f, 0.0f);
+  gradientLayer.endPoint = CGPointMake(1.0f, 1.0f);
+  gradientLayer.mask = discMask;
   
-  return gradient;
+  return gradientLayer;
 }
 
 - (CALayer *)discMask {
@@ -74,6 +79,11 @@ static CGFloat const kDiskRectInsetDelta = 10.0f; // allows for smaller disc whi
 - (void)setupGestureRecogniser {
   UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
   [self addGestureRecognizer:tapGesture];
+}
+
+#pragma mark - UI Update
+- (void)updateWithFirstColor:(UIColor *)firstColor secondColor:(UIColor *)secondColor {
+  self.dualColorDisc.colors = @[ (id)firstColor.CGColor, (id)firstColor.CGColor, (id)secondColor.CGColor, (id)secondColor.CGColor ];
 }
 
 - (void)viewTapped:(UIGestureRecognizer *)sender {

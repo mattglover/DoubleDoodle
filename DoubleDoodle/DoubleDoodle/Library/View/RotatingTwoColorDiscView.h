@@ -24,6 +24,9 @@ typedef void (^RotatingDiscViewCompletionBlock) (BOOL finished);
 
 @property (nonatomic, weak) id<RotatingTwoColorDiscViewDelegate> delegate;
 
+- (id)initWithFrame:(CGRect)frame firstColor:(UIColor *)firstColor secondColor:(UIColor *)secondColor;
+- (void)updateWithFirstColor:(UIColor *)firstColor secondColor:(UIColor *)secondColor;
+
 - (void)animateWithDuration:(NSTimeInterval)duration direction:(RotatingDiscViewDirection)direction withCompleton:(RotatingDiscViewCompletionBlock)completion;
 
 @end

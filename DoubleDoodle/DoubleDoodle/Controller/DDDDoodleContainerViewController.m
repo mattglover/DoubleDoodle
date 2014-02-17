@@ -14,6 +14,7 @@
 #import "DDDPhotoPersistanceManager.h"
 #import "SVProgressHUD.h"
 #import "RotatingTwoColorDiscView.h"
+#import "TwoColorTwinPanelView.h"
 
 typedef NS_ENUM (NSUInteger, TransitionType) {
   TransitionTypeCircle,
@@ -21,7 +22,7 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
   TransitionTypeFromSideBySide
 };
 
-@interface DDDDoodleContainerViewController () <DDDDoodleViewControllerDelegate, RotatingTwoColorDiscViewDelegate, UIActionSheetDelegate>
+@interface DDDDoodleContainerViewController () <DDDDoodleViewControllerDelegate, RotatingTwoColorDiscViewDelegate, TwoColorTwinPanelViewDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, copy) NSString *xml;
 
@@ -29,6 +30,7 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
 @property (nonatomic, strong) DDDDoodleViewController *secondDoodleViewController;
 
 @property (nonatomic, strong) RotatingTwoColorDiscView *swapViewsButton;
+@property (nonatomic, strong) TwoColorTwinPanelView *sideBySidePanelViewButton;
 @property (nonatomic, strong) UIBarButtonItem *savePhotoButton;
 
 @property (nonatomic, assign) BOOL transitionInProgress;
@@ -101,17 +103,15 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
 }
 
 - (void)setupSwapViewsButton {
-  self.swapViewsButton = [[RotatingTwoColorDiscView alloc] initWithFrame:CGRectMake(30, CGRectGetHeight(self.view.frame) - 60, 50, 50)];
+  self.swapViewsButton = [[RotatingTwoColorDiscView alloc] initWithFrame:CGRectMake(30, CGRectGetHeight(self.view.frame) - 60, 50, 50) firstColor:[UIColor blackColor] secondColor:[UIColor whiteColor]];
   self.swapViewsButton.delegate = self;
   [self.view addSubview:self.swapViewsButton];
 }
 
 - (void)setupSideBySideViewsButton {
-  UIBarButtonItem *sideBySideButton = [[UIBarButtonItem alloc] initWithTitle:@"Sd"
-                                                                       style:UIBarButtonItemStyleBordered
-                                                                      target:self
-                                                                      action:@selector(sideBySideViews:)];
-  [self.navigationItem setLeftBarButtonItems:@[ sideBySideButton ]];
+  self.sideBySidePanelViewButton = [[TwoColorTwinPanelView alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.view.frame) - 100, CGRectGetHeight(self.view.frame) - 60, 70, 50) firstColor:[UIColor blackColor] secondColor:[UIColor whiteColor]];
+  [self.sideBySidePanelViewButton setDelegate:self];
+  [self.view addSubview:self.sideBySidePanelViewButton];
 }
 
 #pragma mark - Save Photo Bar Button Item
@@ -150,8 +150,8 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
   }];
 }
 
-#pragma mark - UIBarButtonItem Listeners
-- (void)sideBySideViews:(UIBarButtonItem *)sender {
+#pragma mark - TwoColorTwinPanelView Delegate
+- (void)sideBySideViews:(TwoColorTwinPanelView *)sender {
   self.transitionInProgress = YES;
   
   [self removeSavePhotoButtonAnimated:YES];
@@ -178,6 +178,13 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
 - (void)didSelectRotatingDiscView:(RotatingTwoColorDiscView *)view {
   if(!self.transitionInProgress && ![self isCurrentlySideBySide]) {
      [self swapViews:view];
+  }
+}
+
+#pragma mark - TwoColorTwinPanelView Delegate
+- (void)didSelectTwoColorTwinPanelView:(TwoColorTwinPanelView *)view {
+  if(!self.transitionInProgress && ![self isCurrentlySideBySide]) {
+    [self sideBySideViews:view];
   }
 }
 
