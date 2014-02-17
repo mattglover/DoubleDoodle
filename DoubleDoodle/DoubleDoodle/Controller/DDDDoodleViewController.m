@@ -56,20 +56,26 @@ static CGFloat const kDoodleViewLineWidth = 4.0f;
 
 #pragma mark - Setup
 - (void)initDoodleViewWithBackgroundColor:(UIColor *)backgroundColor lineStrokeColor:(UIColor *)lineStrokeColor {
-
-  UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doodleViewTapped:)];
-  UISwipeGestureRecognizer *swipeUpGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(doodleViewSwipeUp:)];
-  [swipeUpGesture setDirection:UISwipeGestureRecognizerDirectionUp];
   
   _doodleView = [[DDDDoodleView alloc] initWithFrame:[self doodleViewFrame]];
   [_doodleView setDelegate:self];
   [_doodleView setBackgroundColor:backgroundColor];
   [_doodleView setLineColor:lineStrokeColor];
   [_doodleView setLineWidth:kDoodleViewLineWidth];
-  [_doodleView addGestureRecognizer:tapGesture];
-  [_doodleView addGestureRecognizer:swipeUpGesture];
+  
+  [self configureGestureRecognisersForDoodleView:_doodleView];
   
   [self.view addSubview:_doodleView];
+}
+
+- (void)configureGestureRecognisersForDoodleView:(DDDDoodleView *)doodleView {
+  
+  UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doodleViewTapped:)];
+  UISwipeGestureRecognizer *swipeUpGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(doodleViewSwipeUp:)];
+  [swipeUpGesture setDirection:UISwipeGestureRecognizerDirectionUp];
+  
+  [doodleView addGestureRecognizer:tapGesture];
+  [doodleView addGestureRecognizer:swipeUpGesture];
 }
 
 #pragma mark - DDDDoodleView Delegate
@@ -120,7 +126,7 @@ static CGFloat const kDoodleViewLineWidth = 4.0f;
 }
 
 - (BOOL)canClearDoodleView {
-  // Can only clear if view is transformed
+  // Can only clear if view is not in Doodleable state
   return [self isDoodleViewTransformed];
 }
 
