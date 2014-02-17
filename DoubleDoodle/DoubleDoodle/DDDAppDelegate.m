@@ -13,11 +13,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-  // Override point for customization after application launch.
-  self.window.backgroundColor = [UIColor whiteColor];
   
   DDDDoodleContainerViewController *doodleContainerViewController = [[DDDDoodleContainerViewController alloc] initWithXML:@""];
-  
   UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:doodleContainerViewController];
   [self.window setRootViewController:navigationController];
   
