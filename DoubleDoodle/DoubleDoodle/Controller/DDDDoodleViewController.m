@@ -117,6 +117,10 @@ static CGFloat const kDoodleViewLineWidth = 4.0f;
   }
 }
 
+- (UIColor *)representativeDoodleViewColor {
+  return self.doodleView.backgroundColor;
+}
+
 #pragma mark - Private Helper Methods - Frame/Rect
 - (CGRect)doodleViewFrame {
   CGRect entireViewBounds = self.view.bounds;

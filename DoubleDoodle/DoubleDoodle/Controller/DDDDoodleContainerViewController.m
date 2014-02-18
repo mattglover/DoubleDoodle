@@ -121,13 +121,17 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
 }
 
 - (void)setupSwapViewsButton {
-  self.swapViewsButton = [[RotatingTwoColorDiscView alloc] initWithFrame:CGRectMake(30, CGRectGetHeight(self.view.frame) - 60, 50, 50) firstColor:[UIColor blackColor] secondColor:[UIColor whiteColor]];
+  self.swapViewsButton = [[RotatingTwoColorDiscView alloc] initWithFrame:CGRectMake(30, CGRectGetHeight(self.view.frame) - 60, 50, 50)
+                                                              firstColor:[self.firstDoodleViewController representativeDoodleViewColor]
+                                                             secondColor:[self.secondDoodleViewController representativeDoodleViewColor]];
   self.swapViewsButton.delegate = self;
   [self.view addSubview:self.swapViewsButton];
 }
 
 - (void)setupSideBySideViewsButton {
-  self.sideBySidePanelViewButton = [[TwoColorTwinPanelView alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.view.frame) - 100, CGRectGetHeight(self.view.frame) - 60, 70, 50) firstColor:[UIColor blackColor] secondColor:[UIColor whiteColor]];
+  self.sideBySidePanelViewButton = [[TwoColorTwinPanelView alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.view.frame) - 100, CGRectGetHeight(self.view.frame) - 60, 70, 50)
+                                                                     firstColor:[self.firstDoodleViewController representativeDoodleViewColor]
+                                                                    secondColor:[self.secondDoodleViewController representativeDoodleViewColor]];
   [self.sideBySidePanelViewButton setDelegate:self];
   [self.view addSubview:self.sideBySidePanelViewButton];
 }
