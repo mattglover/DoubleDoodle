@@ -31,7 +31,7 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
 
 @property (nonatomic, strong) RotatingTwoColorDiscView *swapViewsButton;
 @property (nonatomic, strong) TwoColorTwinPanelView *sideBySidePanelViewButton;
-@property (nonatomic, strong) UIBarButtonItem *savePhotoButton;
+@property (nonatomic, strong) UIBarButtonItem *saveDoodleImageButton;
 
 @property (nonatomic, assign) BOOL transitionInProgress;
 
@@ -65,7 +65,9 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
   
   [self setupSwapViewsButton];
   [self setupSideBySideViewsButton];
-  [self presentSavePhotoButtonAnimated:NO];
+  [self setupSaveDoodleImageButton];
+  
+  [self presentSaveDoodleImageButtonAnimated:NO];
 }
 
 #pragma mark - Setup
@@ -114,24 +116,27 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
   [self.view addSubview:self.sideBySidePanelViewButton];
 }
 
-#pragma mark - Save Photo Bar Button Item
-- (void)presentSavePhotoButtonAnimated:(BOOL)animated {
-  if (!self.savePhotoButton) {
-    self.savePhotoButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+- (void)setupSaveDoodleImageButton {
+  if (!self.saveDoodleImageButton) {
+    self.saveDoodleImageButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
                                                                          target:self
-                                                                         action:@selector(savePhotoButtonTapped:)];
+                                                                         action:@selector(saveDoodleImageButtonTapped:)];
   }
-  [self.navigationItem setRightBarButtonItem:self.savePhotoButton animated:animated];
 }
 
-- (void)removeSavePhotoButtonAnimated:(BOOL)animated {
+#pragma mark - Save DoodleImage Bar Button Item
+- (void)presentSaveDoodleImageButtonAnimated:(BOOL)animated {
+  [self.navigationItem setRightBarButtonItem:self.saveDoodleImageButton animated:animated];
+}
+
+- (void)removeSaveDoodleImageButtonAnimated:(BOOL)animated {
   [self.navigationItem setRightBarButtonItem:nil animated:animated];
 }
 
 #pragma mark - Swap View
 - (void)swapViews:(RotatingTwoColorDiscView *)discView {
-  self.transitionInProgress = YES;
-  [self presentSavePhotoButtonAnimated:YES];
+  
+  [self presentSaveDoodleImageButtonAnimated:YES];
   
   DDDDoodleView *toBackView = [self frontMostDoodleViewController] == self.firstDoodleViewController ? self.firstDoodleViewController.doodleView : self.secondDoodleViewController.doodleView;
   DDDDoodleView *toFrontView = [self frontMostDoodleViewController] == self.firstDoodleViewController ? self.secondDoodleViewController.doodleView : self.firstDoodleViewController.doodleView;
@@ -151,10 +156,9 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
 }
 
 #pragma mark - TwoColorTwinPanelView Delegate
-- (void)sideBySideViews:(TwoColorTwinPanelView *)sender {
-  self.transitionInProgress = YES;
+- (void)sideBySideViewsTapped:(TwoColorTwinPanelView *)sender {
   
-  [self removeSavePhotoButtonAnimated:YES];
+  [self removeSaveDoodleImageButtonAnimated:YES];
   
   [self performTransition:TransitionTypeSideBySide
                 frontView:nil
@@ -165,7 +169,8 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
   }];
 }
 
-- (void)savePhotoButtonTapped:(UIBarButtonItem *)sender {
+#pragma mark - Bar Button Item Interactions
+- (void)saveDoodleImageButtonTapped:(UIBarButtonItem *)sender {
   UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
                                delegate:self
                       cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
@@ -176,21 +181,20 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
 
 #pragma mark - RotatingDiscView Delegate
 - (void)didSelectRotatingDiscView:(RotatingTwoColorDiscView *)view {
-  if(!self.transitionInProgress && ![self isCurrentlySideBySide]) {
+  if([self canRespondToUserButtonTaps]) {
      [self swapViews:view];
   }
 }
 
 #pragma mark - TwoColorTwinPanelView Delegate
 - (void)didSelectTwoColorTwinPanelView:(TwoColorTwinPanelView *)view {
-  if(!self.transitionInProgress && ![self isCurrentlySideBySide]) {
-    [self sideBySideViews:view];
+  if([self canRespondToUserButtonTaps]) {
+    [self sideBySideViewsTapped:view];
   }
 }
 
 #pragma mark - DDDDoodleViewController Delegate
 - (void)didSelectDoodleViewController:(DDDDoodleViewController *)controller {
-  self.transitionInProgress = YES;
   
   // User has tapped on a DoodleView
   // If we are currently displaying sideBySide then dispatch - TransitionTypeFromSideBySide
@@ -203,7 +207,7 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
                    animated:YES
                  completion:^(BOOL finished) {
                    
-      [self presentSavePhotoButtonAnimated:YES];
+      [self presentSaveDoodleImageButtonAnimated:YES];
       self.transitionInProgress = NO;
     }];
   }
@@ -252,6 +256,8 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
                  animated:(BOOL)animated
                completion:(void(^)(BOOL finished))completion {
   
+  self.transitionInProgress = YES;
+  
   switch (transition) {
     case TransitionTypeCircle: {
       DoodleViewAnimationDirection direction = (frontView == self.firstDoodleViewController.doodleView) ? DoodleViewAnimationDirectionAntiClockwise: DoodleViewAnimationDirectionClockwise;
@@ -276,6 +282,10 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
                                                   animated:YES
                                                 completion:completion];
       break;
+      
+      default:
+        self.transitionInProgress = NO;
+      break;
   }
 }
 
@@ -293,6 +303,11 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
 #pragma mark - Private Helper - Currently Displaying Side by Side
 - (BOOL)isCurrentlySideBySide {
   return ![self.firstDoodleViewController isDoodleViewEditable] && ![self.secondDoodleViewController isDoodleViewEditable];
+}
+
+#pragma mark - Private Helper - Can Respond User Button Taps
+- (BOOL)canRespondToUserButtonTaps {
+  return !self.transitionInProgress && ![self isCurrentlySideBySide];
 }
 
 @end
