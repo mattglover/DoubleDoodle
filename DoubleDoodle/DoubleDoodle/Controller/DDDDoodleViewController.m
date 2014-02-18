@@ -8,15 +8,15 @@
 
 #import "DDDDoodleViewController.h"
 #import "DDDDoodleView.h"
+#import "DDDDoodleViewConfig.h"
 
 static CGFloat const kDoodleViewFrameInsetX = 10.0f;
 static CGFloat const kDoodleViewFrameInsetY = 70.0f;
 static CGFloat const kDoodleViewOriginPositionY = 20.0f + 44.0f + 10.0f;
 static CGFloat const kDoodleViewLineWidth = 4.0f;
 
-@interface DDDDoodleViewController () <DDDDoodleViewDelegate, UIAlertViewDelegate, UIGestureRecognizerDelegate>
+@interface DDDDoodleViewController ()<DDDDoodleViewDelegate, UIAlertViewDelegate, UIGestureRecognizerDelegate>
 
-@property (nonatomic, copy) NSString *xml;
 @property (nonatomic, assign, getter = isDoodleViewEnabled) BOOL doodleViewEnabled;
 
 @end
@@ -24,21 +24,11 @@ static CGFloat const kDoodleViewLineWidth = 4.0f;
 @implementation DDDDoodleViewController
 
 #pragma mark - Initializers
-// Should use designated initializer | initWithXML: |
-- (id)init {
-  NSLog(@"Should use designated initializer initWithXML:");
-  return [self initWithXML:@"" withDelegate:nil];
-}
-
-// Designated Initializer
-- (id)initWithXML:(NSString *)xml withDelegate:(id<DDDDoodleViewControllerDelegate>)delegate {
+- (id)initWithDoodleViewConfiguration:(DDDDoodleViewConfig *)configuration delegate:(id<DDDDoodleViewControllerDelegate>)delegate {
   if (self = [super init]) {
-    _xml = xml;
-    _delegate = delegate;
     
-    UIColor *backgroundColor = [self.xml isEqualToString:@""] ? [UIColor blackColor] :[UIColor whiteColor];
-    UIColor *lineStrokeColor = [self.xml isEqualToString:@""] ? [UIColor whiteColor] :[UIColor blackColor];
-    [self initDoodleViewWithBackgroundColor:backgroundColor lineStrokeColor:lineStrokeColor];
+    _delegate = delegate;
+    [self initDoodleViewWithBackgroundColor:configuration.backgroundColor lineStrokeColor:configuration.foregroundColor];
   }
   return self;
 }

@@ -15,6 +15,7 @@
 #import "SVProgressHUD.h"
 #import "RotatingTwoColorDiscView.h"
 #import "TwoColorTwinPanelView.h"
+#import "DDDXMLParser.h"
 
 typedef NS_ENUM (NSUInteger, TransitionType) {
   TransitionTypeCircle,
@@ -22,9 +23,13 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
   TransitionTypeFromSideBySide
 };
 
-@interface DDDDoodleContainerViewController () <DDDDoodleViewControllerDelegate, RotatingTwoColorDiscViewDelegate, TwoColorTwinPanelViewDelegate, UIActionSheetDelegate>
+const NSInteger kNumberOfConfigurationsRequired = 2;
 
-@property (nonatomic, copy) NSString *xml;
+@interface DDDDoodleContainerViewController ()<DDDDoodleViewControllerDelegate, RotatingTwoColorDiscViewDelegate, TwoColorTwinPanelViewDelegate, UIActionSheetDelegate>
+
+@property (nonatomic, strong) DDDXMLParser *xmlParser;
+@property (nonatomic, copy) NSData *xmlData;
+@property (nonatomic, copy) NSArray *doodleViewConfigurations;
 
 @property (nonatomic, strong) DDDDoodleViewController *firstDoodleViewController;
 @property (nonatomic, strong) DDDDoodleViewController *secondDoodleViewController;
@@ -42,13 +47,13 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
 #pragma mark - Initializers
 // Should use designated initializer | initWithXML: |
 - (id)init {
-  return [self initWithXML:@""];
+  return [self initWithXMLData:nil];
 }
 
 // Designated Initializer
-- (id)initWithXML:(NSString *)xml {
+- (id)initWithXMLData:(NSData *)xmlData {
   if (self = [super init]) {
-    _xml = xml;
+    _xmlData = xmlData;
   }
   return self;
 }
@@ -61,6 +66,8 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
   self.view.tintColor = [UIColor blackColor];
   
   [self setupBackground];
+  
+  [self setupDoodleViewConfigurations];
   [self setupChildDoodleViewControllers];
   
   [self setupSwapViewsButton];
@@ -75,10 +82,19 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
   self.view.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1.0];
 }
 
+- (void)setupDoodleViewConfigurations {
+  self.xmlParser = [[DDDXMLParser alloc] init];
+  self.doodleViewConfigurations = [self.xmlParser doodleViewConfigurationsWithXML:self.xmlData];
+  
+  if ([self.doodleViewConfigurations count] != kNumberOfConfigurationsRequired) {
+    [self invalidDoodleViewConfiguration];
+  }
+}
+
 - (void)setupChildDoodleViewControllers {
   
-  self.firstDoodleViewController = [[DDDDoodleViewController alloc] initWithXML:@"" withDelegate:self];
-  self.secondDoodleViewController= [[DDDDoodleViewController alloc] initWithXML:@"x" withDelegate:self];
+  self.firstDoodleViewController  = [[DDDDoodleViewController alloc] initWithDoodleViewConfiguration:self.doodleViewConfigurations[0] delegate:self];
+  self.secondDoodleViewController = [[DDDDoodleViewController alloc] initWithDoodleViewConfiguration:self.doodleViewConfigurations[1] delegate:self];
   
   // Adding Child View Controllers
   [self.firstDoodleViewController willMoveToParentViewController:self];
@@ -287,6 +303,11 @@ typedef NS_ENUM (NSUInteger, TransitionType) {
         self.transitionInProgress = NO;
       break;
   }
+}
+
+#pragma mark - Invalid Configuration
+- (void)invalidDoodleViewConfiguration {
+  NSLog(@"Invalid DoodleView Configuration");
 }
 
 #pragma mark - Private Helper - Front Most ViewController
