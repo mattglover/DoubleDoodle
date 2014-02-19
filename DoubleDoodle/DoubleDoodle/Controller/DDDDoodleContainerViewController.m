@@ -54,7 +54,7 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
   return [self initWithXMLData:nil];
 }
 
-// Designated Initializer
+// Designated Initializer - xmlData contains the Color information for the views
 - (id)initWithXMLData:(NSData *)xmlData {
   if (self = [super init]) {
     _xmlData = xmlData;

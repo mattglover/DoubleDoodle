@@ -16,7 +16,7 @@ typedef NS_ENUM(NSInteger, RotatingDiscViewDirection) {
 typedef void (^RotatingDiscViewCompletionBlock) (BOOL finished);
 
 @class RotatingTwoColorDiscView;
-@protocol RotatingTwoColorDiscViewDelegate <NSObject>
+@protocol RotatingTwoColorDiscViewDelegate<NSObject>
 - (void)didSelectRotatingDiscView:(RotatingTwoColorDiscView *)view;
 @end
 

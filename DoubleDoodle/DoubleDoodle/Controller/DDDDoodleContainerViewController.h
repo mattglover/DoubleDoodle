@@ -10,8 +10,10 @@
 
 @interface DDDDoodleContainerViewController : UIViewController
 
+// Designated Initializer
 - (id)initWithXMLData:(NSData *)xmlData;
 
+// Update the UI and Child ViewControllers with new DDDDoodleViewConfig configuration
 - (void)updateWithXMLData:(NSData *)xmlData;
 
 @end

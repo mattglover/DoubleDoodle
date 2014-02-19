@@ -11,7 +11,7 @@
 
 static NSString * const kTranformKeyPath = @"transform.rotation";
 static CGFloat const k180Degress = (180 * M_PI / 180);
-static CGFloat const kDiskRectInsetDelta = 10.0f; // allows for smaller disc whilst maintain a larger hitspot for view
+static CGFloat const kDiskRectInset = 10.0f; // allows for smaller disc whilst maintain a larger hitspot for view
 
 @interface RotatingTwoColorDiscView ()
 @property (nonatomic, strong) CALayer *rotatingLayer;
@@ -66,7 +66,7 @@ static CGFloat const kDiskRectInsetDelta = 10.0f; // allows for smaller disc whi
 
 - (CALayer *)discMask {
   CGFloat diameter = MAX(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds));
-  CGRect discRect = CGRectInset(self.bounds, kDiskRectInsetDelta, kDiskRectInsetDelta);
+  CGRect discRect = CGRectInset(self.bounds, kDiskRectInset, kDiskRectInset);
   
   CAShapeLayer *discMask = [CAShapeLayer layer];
   discMask.bounds = discRect;
@@ -102,7 +102,7 @@ static CGFloat const kDiskRectInsetDelta = 10.0f; // allows for smaller disc whi
     self.animationCompletionBlock = completion;
     self.animating = YES;
     
-    NSInteger directionModifier = direction == RotatingDiscViewDirectionClockwise ? 1.0 : -1.0;
+    NSInteger switchDirectionModifier = direction == RotatingDiscViewDirectionClockwise ? 1.0 : -1.0;
     
     NSNumber *startingTransform = [self.rotatingLayer valueForKeyPath:kTranformKeyPath];
     
@@ -112,7 +112,7 @@ static CGFloat const kDiskRectInsetDelta = 10.0f; // allows for smaller disc whi
     CABasicAnimation *rotation = [CABasicAnimation animationWithKeyPath:kTranformKeyPath];
     rotation.duration  = duration;
     rotation.fromValue = startingTransform;
-    rotation.byValue   = @(k180Degress * directionModifier);
+    rotation.byValue   = @(k180Degress * switchDirectionModifier);
     rotation.delegate  = self;
     
     [self.rotatingLayer addAnimation:rotation forKey:nil];

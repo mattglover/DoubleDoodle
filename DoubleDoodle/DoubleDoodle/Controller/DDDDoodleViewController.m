@@ -26,7 +26,6 @@ static CGFloat const kDoodleViewLineWidth = 4.0f;
 #pragma mark - Initializers
 - (id)initWithDoodleViewConfiguration:(DDDDoodleViewConfig *)configuration delegate:(id<DDDDoodleViewControllerDelegate>)delegate {
   if (self = [super init]) {
-    
     _delegate = delegate;
     [self initDoodleViewWithBackgroundColor:configuration.backgroundColor lineStrokeColor:configuration.foregroundColor];
   }
@@ -100,7 +99,8 @@ static CGFloat const kDoodleViewLineWidth = 4.0f;
 
 - (void)presentConfirmClearAlert {
   [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Confirm Clear", nil)
-                              message:nil delegate:self
+                              message:nil
+                             delegate:self
                     cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
                     otherButtonTitles:NSLocalizedString(@"Confirm", nil), nil]
    show];
@@ -108,12 +108,7 @@ static CGFloat const kDoodleViewLineWidth = 4.0f;
 
 #pragma mark - UIGestureRecogniser Delegate
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
-
-  if ([self isDoodleViewEditable]) {
-    return NO;
-  }
-  
-  return YES;
+  return ([self isDoodleViewEditable]) ? NO : YES;
 }
 
 #pragma mark - UIAlertView Delegate
@@ -136,8 +131,8 @@ static CGFloat const kDoodleViewLineWidth = 4.0f;
   return doodleViewFrame;
 }
 
+// Can only clear if Doodle View is not in editable state
 - (BOOL)canClearDoodleView {
-  // Can only clear if view is not in Doodleable state
   return ![self isDoodleViewEditable];
 }
 

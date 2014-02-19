@@ -9,7 +9,7 @@
 #import "SmoothLineView.h"
 
 @class DDDDoodleView;
-@protocol DDDDoodleViewDelegate <NSObject>
+@protocol DDDDoodleViewDelegate<NSObject>
 - (BOOL)canDrawOnDoodleView:(DDDDoodleView *)doodleView;
 @end
 

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class TwoColorTwinPanelView;
-@protocol TwoColorTwinPanelViewDelegate <NSObject>
+@protocol TwoColorTwinPanelViewDelegate<NSObject>
 - (void)didSelectTwoColorTwinPanelView:(TwoColorTwinPanelView *)view;
 @end
 

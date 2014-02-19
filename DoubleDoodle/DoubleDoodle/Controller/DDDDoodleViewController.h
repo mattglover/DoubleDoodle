@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class DDDDoodleViewController;
-@protocol DDDDoodleViewControllerDelegate <NSObject>
+@protocol DDDDoodleViewControllerDelegate<NSObject>
 - (void)didSelectDoodleViewController:(DDDDoodleViewController *)controller;
 @end
 

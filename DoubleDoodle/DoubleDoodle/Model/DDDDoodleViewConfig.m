@@ -11,7 +11,7 @@
 @implementation DDDDoodleViewConfig
 
 - (BOOL)isValidConfiguration {
-  return self.backgroundColor && self.foregroundColor;
+  return (self.backgroundColor && self.foregroundColor) ? YES : NO;
 }
 
 @end

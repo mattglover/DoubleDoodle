@@ -9,7 +9,7 @@
 #import "TwoColorTwinPanelView.h"
 #import <QuartzCore/QuartzCore.h>
 
-static CGFloat const kPanelRectInsetDelta = 10.0f; // allows for smaller disc whilst maintain a larger hitspot for view
+static CGFloat const kPanelRectInset = 10.0f; // allows for smaller disc whilst maintain a larger hitspot for view
 
 @interface TwoColorTwinPanelView ()
 @property (nonatomic, strong) CAGradientLayer *gradientLayer;
@@ -33,7 +33,7 @@ static CGFloat const kPanelRectInsetDelta = 10.0f; // allows for smaller disc wh
 - (void)initTwinPanelLayerWithFirstColor:(UIColor *)firstColor secondColor:(UIColor *)secondColor {
   
   _gradientLayer = [CAGradientLayer layer];
-  _gradientLayer.bounds = CGRectInset(self.bounds, kPanelRectInsetDelta, kPanelRectInsetDelta);
+  _gradientLayer.bounds = CGRectInset(self.bounds, kPanelRectInset, kPanelRectInset);
   _gradientLayer.position = CGPointMake(CGRectGetWidth(self.bounds)/2, CGRectGetHeight(self.bounds)/2);
   _gradientLayer.colors = @[ (id)firstColor.CGColor, (id)firstColor.CGColor, (id)secondColor.CGColor, (id)secondColor.CGColor ];
   _gradientLayer.locations = @[ @(0.0), @(0.5), @(0.5), @(1.0) ];
