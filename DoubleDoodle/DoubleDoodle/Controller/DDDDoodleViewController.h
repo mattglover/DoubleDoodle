@@ -29,7 +29,7 @@
 // Useful for deciding if Doodle View is not currently editable
 - (BOOL)isDoodleViewEditable;
 
-// Useful Identifier to visually represent this Controller's doodleView
+// Useful to visually represent as a color, this Controller's doodleView
 - (UIColor *)representativeDoodleViewColor;
 
 @end

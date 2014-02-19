@@ -8,9 +8,7 @@
 
 #import "DDDAppDelegate.h"
 #import "DDDDoodleContainerViewController.h"
-
-static NSString * const kDefaultXMLFilename = @"doodleconfig_blackwhite";
-static NSString * const kDefaultXMLFileType = @"xml";
+#import "XMLDataFactory.h"
 
 @implementation DDDAppDelegate
 
@@ -18,7 +16,7 @@ static NSString * const kDefaultXMLFileType = @"xml";
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   
   // Load default xml data
-  NSData *xmlData = [self xmlData];
+  NSData *xmlData = [[XMLDataFactory defaultFactory] xmlDataWithXMLDataOption:XMLDataOptionDefault];
   DDDDoodleContainerViewController *doodleContainerViewController = [[DDDDoodleContainerViewController alloc] initWithXMLData:xmlData];
   
   UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:doodleContainerViewController];
@@ -28,11 +26,6 @@ static NSString * const kDefaultXMLFileType = @"xml";
   [self.window makeKeyAndVisible];
   
   return YES;
-}
-
-- (NSData *)xmlData {
-  NSString *xmlFilePath = [[NSBundle mainBundle] pathForResource:kDefaultXMLFilename ofType:kDefaultXMLFileType];
-  return [NSData dataWithContentsOfFile:xmlFilePath];
 }
 
 @end

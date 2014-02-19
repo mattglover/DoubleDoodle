@@ -16,6 +16,7 @@
 #import "RotatingTwoColorDiscView.h"
 #import "TwoColorTwinPanelView.h"
 #import "DDDXMLParser.h"
+#import "XMLDataFactory.h"
 
 typedef NS_ENUM (NSUInteger, TransitionType) {
   TransitionTypeCircle,
@@ -39,6 +40,8 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
 @property (nonatomic, strong) UIBarButtonItem *saveDoodleImageButton;
 
 @property (nonatomic, assign) BOOL transitionInProgress;
+
+@property (nonatomic, assign, getter = isDisplayingDefaultXML) BOOL displayingDefaultXML;
 
 @end
 
@@ -64,6 +67,7 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
 
   self.title = NSLocalizedString(@"Double Doodle", nil);
   self.view.tintColor = [UIColor blackColor];
+  self.displayingDefaultXML = YES;
   
   [self setupBackground];
   
@@ -73,6 +77,8 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
   [self setupSwapViewsButton];
   [self setupSideBySideViewsButton];
   [self setupSaveDoodleImageButton];
+  
+  [self setupLoadAlertnativeXMLBarButton];
   
   [self presentSaveDoodleImageButtonAnimated:NO];
 }
@@ -144,18 +150,37 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
   }
 }
 
+- (void)setupLoadAlertnativeXMLBarButton {
+  UIBarButtonItem *alternativeXMLButton = [[UIBarButtonItem alloc] initWithTitle:@"xml" style:UIBarButtonItemStylePlain target:self action:@selector(updateWithAlternativeXML)];
+  [self.navigationItem setLeftBarButtonItem:alternativeXMLButton];
+}
+
+- (void)updateWithAlternativeXML {
+  
+  // Toggle between Default XML and Alertnative XML
+  XMLDataOption xmlOption = self.isDisplayingDefaultXML ? XMLDataOptionAlternative : XMLDataOptionDefault;
+  self.displayingDefaultXML = !self.displayingDefaultXML;
+  
+  NSData *xmlData = [[XMLDataFactory defaultFactory] xmlDataWithXMLDataOption:xmlOption];
+  [self updateWithXMLData:xmlData];
+}
+
 #pragma mark - Update UI
 - (void)updateWithXMLData:(NSData *)xmlData {
   
   self.xmlParser = [[DDDXMLParser alloc] init];
-  NSArray *doodleViewConfigurations = [self.xmlParser doodleViewConfigurationsWithXML:self.xmlData];
+  NSArray *doodleViewConfigurations = [self.xmlParser doodleViewConfigurationsWithXML:xmlData];
   
-  if ([self.doodleViewConfigurations count] != kNumberOfConfigurationsRequired) {
+  if ([doodleViewConfigurations count] != kNumberOfConfigurationsRequired) {
     [self invalidDoodleViewConfiguration];
   } else {
     self.doodleViewConfigurations = doodleViewConfigurations;
     [self.firstDoodleViewController  updateWithDoodleViewConfiguration:self.doodleViewConfigurations[0]];
     [self.secondDoodleViewController updateWithDoodleViewConfiguration:self.doodleViewConfigurations[1]];
+    [self.swapViewsButton updateWithFirstColor:[self.firstDoodleViewController representativeDoodleViewColor]
+                                   secondColor:[self.secondDoodleViewController representativeDoodleViewColor]];
+    [self.sideBySidePanelViewButton updateWithFirstColor:[self.firstDoodleViewController representativeDoodleViewColor]
+                                   secondColor:[self.secondDoodleViewController representativeDoodleViewColor]];
   }
 }
 
@@ -326,6 +351,7 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
   }
 }
 
+#pragma mark - Transition Controls (Enable)
 - (void)enableTransitionControls:(BOOL)enabled {
 
   CGFloat alpha = enabled ? 1.0 : 0.1;

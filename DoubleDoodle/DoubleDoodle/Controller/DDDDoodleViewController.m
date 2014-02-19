@@ -73,6 +73,7 @@ static CGFloat const kDoodleViewLineWidth = 4.0f;
 - (void)updateWithDoodleViewConfiguration:(DDDDoodleViewConfig *)configuration {
   self.doodleView.backgroundColor = configuration.backgroundColor;
   self.doodleView.lineColor = configuration.foregroundColor;
+  [self.doodleView setNeedsDisplay];
 }
 
 #pragma mark - DDDDoodleView Delegate
