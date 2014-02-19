@@ -10,6 +10,8 @@
 
 @interface DDDDoodleContainerViewController : UIViewController
 
-- (id)initWithXMLData:(NSData *)xml;
+- (id)initWithXMLData:(NSData *)xmlData;
+
+- (void)updateWithXMLData:(NSData *)xmlData;
 
 @end

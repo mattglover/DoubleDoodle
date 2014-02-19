@@ -45,8 +45,8 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
 @implementation DDDDoodleContainerViewController
 
 #pragma mark - Initializers
-// Should use designated initializer | initWithXML: |
 - (id)init {
+  NSLog(@"Should use designated initializer initWithXML:");
   return [self initWithXMLData:nil];
 }
 
@@ -141,6 +141,21 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
     self.saveDoodleImageButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
                                                                          target:self
                                                                          action:@selector(saveDoodleImageButtonTapped:)];
+  }
+}
+
+#pragma mark - Update UI
+- (void)updateWithXMLData:(NSData *)xmlData {
+  
+  self.xmlParser = [[DDDXMLParser alloc] init];
+  NSArray *doodleViewConfigurations = [self.xmlParser doodleViewConfigurationsWithXML:self.xmlData];
+  
+  if ([self.doodleViewConfigurations count] != kNumberOfConfigurationsRequired) {
+    [self invalidDoodleViewConfiguration];
+  } else {
+    self.doodleViewConfigurations = doodleViewConfigurations;
+    [self.firstDoodleViewController  updateWithDoodleViewConfiguration:self.doodleViewConfigurations[0]];
+    [self.secondDoodleViewController updateWithDoodleViewConfiguration:self.doodleViewConfigurations[1]];
   }
 }
 
@@ -290,6 +305,7 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
       break;
       
     case TransitionTypeSideBySide:
+      [self enableTransitionControls:NO];
       [self performTransitionSideBySideLeftView:self.firstDoodleViewController.doodleView
                                       rightView:self.secondDoodleViewController.doodleView
                                        animated:animated
@@ -297,6 +313,7 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
       break;
       
     case TransitionTypeFromSideBySide:
+      [self enableTransitionControls:YES];
       [self performTransitionFromSideBySideWithToFrontView:frontView
                                                 toBackView:backView
                                                   animated:YES
@@ -307,6 +324,17 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
         self.transitionInProgress = NO;
       break;
   }
+}
+
+- (void)enableTransitionControls:(BOOL)enabled {
+
+  CGFloat alpha = enabled ? 1.0 : 0.1;
+  
+  [UIView animateWithDuration:DDDDoodleContainerViewControllerDefaultAnimationDuration
+                   animations:^{
+                     self.swapViewsButton.alpha = alpha;
+                     self.sideBySidePanelViewButton.alpha = alpha;
+                   }];
 }
 
 #pragma mark - Invalid Configuration

@@ -69,6 +69,12 @@ static CGFloat const kDoodleViewLineWidth = 4.0f;
   [doodleView addGestureRecognizer:swipeUpGesture];
 }
 
+#pragma mark - Update UI
+- (void)updateWithDoodleViewConfiguration:(DDDDoodleViewConfig *)configuration {
+  self.doodleView.backgroundColor = configuration.backgroundColor;
+  self.doodleView.lineColor = configuration.foregroundColor;
+}
+
 #pragma mark - DDDDoodleView Delegate
 - (BOOL)canDrawOnDoodleView:(DDDDoodleView *)doodleView {
   return [self isDoodleViewEditable];

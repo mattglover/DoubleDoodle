@@ -49,6 +49,7 @@
 		E2B1D7D318B408E70029D9BC /* DDDXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B1D7D218B408E70029D9BC /* DDDXMLParser.m */; };
 		E2B1D7D618B40F3B0029D9BC /* DDDDoodleViewConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B1D7D518B40F3B0029D9BC /* DDDDoodleViewConfig.m */; };
 		E2B1D7D918B413F90029D9BC /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B1D7D818B413F90029D9BC /* UIColor+Hex.m */; };
+		E2B1D7DB18B421420029D9BC /* doodleconfig_redblue.xml in Resources */ = {isa = PBXBuildFile; fileRef = E2B1D7DA18B421420029D9BC /* doodleconfig_redblue.xml */; };
 		E2E97E9C18B01B7D000550AD /* DDDPhotoPersistanceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E97E9B18B01B7D000550AD /* DDDPhotoPersistanceManager.m */; };
 		E2E97E9F18B022EB000550AD /* UIImage+UIViews.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E97E9E18B022EB000550AD /* UIImage+UIViews.m */; };
 		ECC2518F9F994102ACC9CA8A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EFF8470F2D8474AA329C59F /* libPods.a */; };
@@ -122,6 +123,7 @@
 		E2B1D7D518B40F3B0029D9BC /* DDDDoodleViewConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDDoodleViewConfig.m; sourceTree = "<group>"; };
 		E2B1D7D718B413F90029D9BC /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		E2B1D7D818B413F90029D9BC /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		E2B1D7DA18B421420029D9BC /* doodleconfig_redblue.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = doodleconfig_redblue.xml; sourceTree = "<group>"; };
 		E2E97E9A18B01B7D000550AD /* DDDPhotoPersistanceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDPhotoPersistanceManager.h; sourceTree = "<group>"; };
 		E2E97E9B18B01B7D000550AD /* DDDPhotoPersistanceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDPhotoPersistanceManager.m; sourceTree = "<group>"; };
 		E2E97E9D18B022EB000550AD /* UIImage+UIViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+UIViews.h"; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 		E2B1D7CE18B406710029D9BC /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				E2B1D7DA18B421420029D9BC /* doodleconfig_redblue.xml */,
 				E2B1D7CF18B406E10029D9BC /* doodleconfig_blackwhite.xml */,
 			);
 			path = Data;
@@ -482,6 +485,7 @@
 				E29283D118B18F0400DC0809 /* AppIcon80.png in Resources */,
 				E213BAC118B2CBBF00C44FB1 /* Default-Portrait@2x.png in Resources */,
 				E29283CF18B18F0400DC0809 /* AppIcon60.png in Resources */,
+				E2B1D7DB18B421420029D9BC /* doodleconfig_redblue.xml in Resources */,
 				E29283CE18B18F0400DC0809 /* AppIcon58.png in Resources */,
 				E213BABD18B2C9A300C44FB1 /* Default@2x.png in Resources */,
 				E29283D018B18F0400DC0809 /* AppIcon76.png in Resources */,

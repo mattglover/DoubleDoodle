@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doodleviews>
+  <doodleview background_color="#ff0000" foreground_color="#0000ff"/>
+  <doodleview background_color="#0000ff" foreground_color="#ff0000"/>
+</doodleviews>

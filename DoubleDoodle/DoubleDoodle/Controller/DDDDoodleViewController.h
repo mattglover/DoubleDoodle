@@ -17,11 +17,14 @@
 @class DDDDoodleViewConfig;
 @interface DDDDoodleViewController : UIViewController
 
-@property (nonatomic, assign) id<DDDDoodleViewControllerDelegate> delegate;
+@property (nonatomic, weak) id<DDDDoodleViewControllerDelegate> delegate;
 @property (nonatomic, strong, readonly) DDDDoodleView *doodleView;
 
 // Designated Initializer
 - (id)initWithDoodleViewConfiguration:(DDDDoodleViewConfig *)configuration delegate:(id<DDDDoodleViewControllerDelegate>)delegate;
+
+// Update the UI with new DDDDoodleViewConfig configuration
+- (void)updateWithDoodleViewConfiguration:(DDDDoodleViewConfig *)configuration;
 
 // Useful for deciding if Doodle View is not currently editable
 - (BOOL)isDoodleViewEditable;
