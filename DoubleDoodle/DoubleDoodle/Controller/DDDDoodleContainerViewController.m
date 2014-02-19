@@ -38,9 +38,10 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
 @property (nonatomic, strong) RotatingTwoColorDiscView *swapViewsButton;
 @property (nonatomic, strong) TwoColorTwinPanelView *sideBySidePanelViewButton;
 @property (nonatomic, strong) UIBarButtonItem *saveDoodleImageButton;
+@property (nonatomic, strong) UILabel *swipeToClearLabel;
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 
-@property (nonatomic, assign) BOOL transitionInProgress;
-
+@property (nonatomic, assign, getter = isTransitionInProgress) BOOL transitionInProgress;
 @property (nonatomic, assign, getter = isDisplayingDefaultXML) BOOL displayingDefaultXML;
 
 @end
@@ -49,7 +50,7 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
 
 #pragma mark - Initializers
 - (id)init {
-  NSLog(@"Should use designated initializer initWithXML:");
+  NSLog(@"Should use designated initializer initWithXMLData:");
   return [self initWithXMLData:nil];
 }
 
@@ -57,6 +58,7 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
 - (id)initWithXMLData:(NSData *)xmlData {
   if (self = [super init]) {
     _xmlData = xmlData;
+    _displayingDefaultXML = YES;
   }
   return self;
 }
@@ -67,27 +69,21 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
 
   self.title = NSLocalizedString(@"Double Doodle", nil);
   self.view.tintColor = [UIColor blackColor];
-  self.displayingDefaultXML = YES;
   
   [self setupBackground];
-  
+  [self setupSwipeToClearLabel];
   [self setupDoodleViewConfigurations];
   [self setupChildDoodleViewControllers];
-  
   [self setupSwapViewsButton];
+  [self setActivityIndicator];
   [self setupSideBySideViewsButton];
   [self setupSaveDoodleImageButton];
-  
   [self setupLoadAlertnativeXMLBarButton];
   
   [self presentSaveDoodleImageButtonAnimated:NO];
 }
 
-#pragma mark - Setup
-- (void)setupBackground {
-  self.view.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1.0];
-}
-
+#pragma mark - Setup DoodleView Configurations
 - (void)setupDoodleViewConfigurations {
   self.xmlParser = [[DDDXMLParser alloc] init];
   self.doodleViewConfigurations = [self.xmlParser doodleViewConfigurationsWithXML:self.xmlData];
@@ -97,6 +93,7 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
   }
 }
 
+#pragma mark - Setup DoodleView Controllers
 - (void)setupChildDoodleViewControllers {
   
   self.firstDoodleViewController  = [[DDDDoodleViewController alloc] initWithDoodleViewConfiguration:self.doodleViewConfigurations[0] delegate:self];
@@ -115,8 +112,8 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
                  backView:self.secondDoodleViewController.doodleView
                  animated:NO
                completion:^(BOOL finished) {
-    self.transitionInProgress = NO;
-  }];
+                 self.transitionInProgress = NO;
+               }];
   
   // Add them in reverse order so First View Controller is on top of second
   [self.view addSubview:self.secondDoodleViewController.doodleView];
@@ -126,12 +123,24 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
   [self.secondDoodleViewController didMoveToParentViewController:self];
 }
 
+#pragma mark - Setup UI
+- (void)setupBackground {
+  self.view.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1.0];
+}
+
 - (void)setupSwapViewsButton {
   self.swapViewsButton = [[RotatingTwoColorDiscView alloc] initWithFrame:CGRectMake(30, CGRectGetHeight(self.view.frame) - 60, 50, 50)
                                                               firstColor:[self.firstDoodleViewController representativeDoodleViewColor]
                                                              secondColor:[self.secondDoodleViewController representativeDoodleViewColor]];
   self.swapViewsButton.delegate = self;
   [self.view addSubview:self.swapViewsButton];
+}
+
+- (void)setActivityIndicator {
+  self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+  self.activityIndicator.center = CGPointMake(CGRectGetWidth(self.view.frame)/2, self.swapViewsButton.center.y);
+  self.activityIndicator.color = self.view.tintColor;
+  [self.view addSubview:self.activityIndicator];
 }
 
 - (void)setupSideBySideViewsButton {
@@ -145,13 +154,23 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
 - (void)setupSaveDoodleImageButton {
   if (!self.saveDoodleImageButton) {
     self.saveDoodleImageButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
-                                                                         target:self
-                                                                         action:@selector(saveDoodleImageButtonTapped:)];
+                                                                               target:self
+                                                                               action:@selector(saveDoodleImageButtonTapped:)];
   }
 }
 
+- (void)setupSwipeToClearLabel {
+  self.swipeToClearLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.bounds) - 150, CGRectGetWidth(self.view.bounds), 40)];
+  self.swipeToClearLabel.text = NSLocalizedString(@"Swipe Up to Clear", nil);
+  self.swipeToClearLabel.textColor = [UIColor colorWithWhite:0.5 alpha:1.0];
+  self.swipeToClearLabel.textAlignment = NSTextAlignmentCenter;
+  self.swipeToClearLabel.alpha = 1.0f;
+  
+  [self.view addSubview:self.swipeToClearLabel];
+}
+
 - (void)setupLoadAlertnativeXMLBarButton {
-  UIBarButtonItem *alternativeXMLButton = [[UIBarButtonItem alloc] initWithTitle:@"xml" style:UIBarButtonItemStylePlain target:self action:@selector(updateWithAlternativeXML)];
+  UIBarButtonItem *alternativeXMLButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"xml", nil) style:UIBarButtonItemStylePlain target:self action:@selector(updateWithAlternativeXML)];
   [self.navigationItem setLeftBarButtonItem:alternativeXMLButton];
 }
 
@@ -167,21 +186,28 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
 
 #pragma mark - Update UI
 - (void)updateWithXMLData:(NSData *)xmlData {
+
+  [self.activityIndicator startAnimating];
   
-  self.xmlParser = [[DDDXMLParser alloc] init];
-  NSArray *doodleViewConfigurations = [self.xmlParser doodleViewConfigurationsWithXML:xmlData];
-  
-  if ([doodleViewConfigurations count] != kNumberOfConfigurationsRequired) {
-    [self invalidDoodleViewConfiguration];
-  } else {
-    self.doodleViewConfigurations = doodleViewConfigurations;
-    [self.firstDoodleViewController  updateWithDoodleViewConfiguration:self.doodleViewConfigurations[0]];
-    [self.secondDoodleViewController updateWithDoodleViewConfiguration:self.doodleViewConfigurations[1]];
-    [self.swapViewsButton updateWithFirstColor:[self.firstDoodleViewController representativeDoodleViewColor]
-                                   secondColor:[self.secondDoodleViewController representativeDoodleViewColor]];
-    [self.sideBySidePanelViewButton updateWithFirstColor:[self.firstDoodleViewController representativeDoodleViewColor]
-                                   secondColor:[self.secondDoodleViewController representativeDoodleViewColor]];
-  }
+  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+    self.xmlParser = [[DDDXMLParser alloc] init];
+    NSArray *doodleViewConfigurations = [self.xmlParser doodleViewConfigurationsWithXML:xmlData];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+      [self.activityIndicator stopAnimating];
+      if ([doodleViewConfigurations count] != kNumberOfConfigurationsRequired) {
+        [self invalidDoodleViewConfiguration];
+      } else {
+        self.doodleViewConfigurations = doodleViewConfigurations;
+        [self.firstDoodleViewController  updateWithDoodleViewConfiguration:self.doodleViewConfigurations[0]];
+        [self.secondDoodleViewController updateWithDoodleViewConfiguration:self.doodleViewConfigurations[1]];
+        [self.swapViewsButton updateWithFirstColor:[self.firstDoodleViewController representativeDoodleViewColor]
+                                       secondColor:[self.secondDoodleViewController representativeDoodleViewColor]];
+        [self.sideBySidePanelViewButton updateWithFirstColor:[self.firstDoodleViewController representativeDoodleViewColor]
+                                                 secondColor:[self.secondDoodleViewController representativeDoodleViewColor]];
+      }
+    });
+  });
 }
 
 #pragma mark - Save DoodleImage Bar Button Item
@@ -193,7 +219,23 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
   [self.navigationItem setRightBarButtonItem:nil animated:animated];
 }
 
-#pragma mark - Swap View
+#pragma mark - Bar Button Item Actions
+- (void)saveDoodleImageButtonTapped:(UIBarButtonItem *)sender {
+  UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                           delegate:self
+                                                  cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                                             destructiveButtonTitle:NSLocalizedString(@"Save to Camera Roll", nil)
+                                                  otherButtonTitles:nil];
+  [actionSheet showFromBarButtonItem:sender animated:YES];
+}
+
+#pragma mark - RotatingDiscView Delegate
+- (void)didSelectRotatingDiscView:(RotatingTwoColorDiscView *)view {
+  if([self canRespondToUserButtonTaps]) {
+     [self swapViews:view];
+  }
+}
+
 - (void)swapViews:(RotatingTwoColorDiscView *)discView {
   
   [self presentSaveDoodleImageButtonAnimated:YES];
@@ -211,11 +253,17 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
                  backView:toBackView
                  animated:YES
                completion:^(BOOL finished) {
-    self.transitionInProgress = NO;
-  }];
+                 self.transitionInProgress = NO;
+               }];
 }
 
 #pragma mark - TwoColorTwinPanelView Delegate
+- (void)didSelectTwoColorTwinPanelView:(TwoColorTwinPanelView *)view {
+  if([self canRespondToUserButtonTaps]) {
+    [self sideBySideViewsTapped:view];
+  }
+}
+
 - (void)sideBySideViewsTapped:(TwoColorTwinPanelView *)sender {
   
   [self removeSaveDoodleImageButtonAnimated:YES];
@@ -225,32 +273,8 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
                  backView:nil
                  animated:YES
                completion:^(BOOL finished) {
-    self.transitionInProgress = NO;
-  }];
-}
-
-#pragma mark - Bar Button Item Interactions
-- (void)saveDoodleImageButtonTapped:(UIBarButtonItem *)sender {
-  UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
-                               delegate:self
-                      cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
-                 destructiveButtonTitle:NSLocalizedString(@"Save to Camera Roll", nil)
-                      otherButtonTitles:nil];
-  [actionSheet showFromBarButtonItem:sender animated:YES];
-}
-
-#pragma mark - RotatingDiscView Delegate
-- (void)didSelectRotatingDiscView:(RotatingTwoColorDiscView *)view {
-  if([self canRespondToUserButtonTaps]) {
-     [self swapViews:view];
-  }
-}
-
-#pragma mark - TwoColorTwinPanelView Delegate
-- (void)didSelectTwoColorTwinPanelView:(TwoColorTwinPanelView *)view {
-  if([self canRespondToUserButtonTaps]) {
-    [self sideBySideViewsTapped:view];
-  }
+                 self.transitionInProgress = NO;
+               }];
 }
 
 #pragma mark - DDDDoodleViewController Delegate
@@ -277,12 +301,15 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
   
   if (buttonIndex == 0) {
+    
+    [self.activityIndicator startAnimating];
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-      
       UIImage *image = [UIImage imageWithView:[self frontMostDoodleViewController].doodleView];
-      
       [[DDDPhotoPersistanceManager sharedManager] saveImageToCameraRoll:image completion:^(BOOL success, NSError *error) {
+        
         dispatch_async(dispatch_get_main_queue(), ^{
+          [self.activityIndicator stopAnimating];
           if (success) {
             [self handleSaveImageSuccess];
           } else {
@@ -331,6 +358,7 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
       
     case TransitionTypeSideBySide:
       [self enableTransitionControls:NO];
+      [self showSwipeToClearLabel:YES];
       [self performTransitionSideBySideLeftView:self.firstDoodleViewController.doodleView
                                       rightView:self.secondDoodleViewController.doodleView
                                        animated:animated
@@ -339,6 +367,7 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
       
     case TransitionTypeFromSideBySide:
       [self enableTransitionControls:YES];
+      [self showSwipeToClearLabel:NO];
       [self performTransitionFromSideBySideWithToFrontView:frontView
                                                 toBackView:backView
                                                   animated:YES
@@ -349,6 +378,14 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
         self.transitionInProgress = NO;
       break;
   }
+}
+
+#pragma mark - Show/Hide "Swipe to Clear Label"
+- (void)showSwipeToClearLabel:(BOOL)show {
+  [UIView animateWithDuration:DDDDoodleContainerViewControllerDefaultAnimationDuration
+                   animations:^{
+                     self.swipeToClearLabel.alpha = show ? 1.0 : 0.0;
+                   }];
 }
 
 #pragma mark - Transition Controls (Enable)
@@ -386,7 +423,7 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
 
 #pragma mark - Private Helper - Can Respond User Button Taps
 - (BOOL)canRespondToUserButtonTaps {
-  return !self.transitionInProgress && ![self isCurrentlySideBySide];
+  return !self.isTransitionInProgress && ![self isCurrentlySideBySide];
 }
 
 @end

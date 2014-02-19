@@ -12,7 +12,9 @@
 "Error"               = "Error";
 "Cancel"              = "Cancelar";
 "Confirm"             = "Confirmar";
+"xml"                 = "XML";
 
+"Swipe Up to Clear"   = "Golpe hasta Clear";
 "Confirm Clear"       = "Confirman claro";
 
 "Save to Camera Roll" = "Guardar en Cámara Roll";
