@@ -64,7 +64,7 @@ static NSTimeInterval const kFromSideBySideDepressScale             = 0.95f;
                                    animated:(BOOL)animated
                                  completion:(void(^)(BOOL finished))completion {
   
-  [UIView animateWithDuration:[self animationDuration:animated]
+  [UIView animateWithDuration:[self fastAnimationDuration:animated]
                         delay:0.0f
                       options:UIViewAnimationOptionCurveEaseIn
                    animations:^{
@@ -102,7 +102,7 @@ static NSTimeInterval const kFromSideBySideDepressScale             = 0.95f;
                      [toFrontView setTransform:CGAffineTransformScale(transform, kFromSideBySideDepressScale, kFromSideBySideDepressScale)];
                    } completion:^(BOOL finished) {
                      
-                     [UIView animateWithDuration:[self animationDuration:animated]
+                     [UIView animateWithDuration:[self fastAnimationDuration:animated]
                                            delay:0.0f
                                          options:UIViewAnimationOptionCurveEaseIn
                                       animations:^{
@@ -126,6 +126,10 @@ static NSTimeInterval const kFromSideBySideDepressScale             = 0.95f;
 #pragma mark - Private Helper - Animation Duration
 - (NSTimeInterval)animationDuration:(BOOL)animated {
   return animated ? DDDDoodleContainerViewControllerDefaultAnimationDuration : 0.0f;
+}
+
+- (NSTimeInterval)fastAnimationDuration:(BOOL)animated {
+  return animated ? (DDDDoodleContainerViewControllerDefaultAnimationDuration * 0.65f) : 0.0f;
 }
 
 @end
