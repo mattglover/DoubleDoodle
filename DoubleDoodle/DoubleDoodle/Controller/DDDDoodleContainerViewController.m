@@ -402,7 +402,11 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
 
 #pragma mark - Invalid Configuration
 - (void)invalidDoodleViewConfiguration {
-  NSLog(@"Invalid DoodleView Configuration");
+  [[[UIAlertView alloc] initWithTitle:@"Invalid XML Configuration"
+                             message:@"The XML specified is not correctly specified"
+                            delegate:nil
+                   cancelButtonTitle:@"OK"
+                   otherButtonTitles:nil] show];
 }
 
 #pragma mark - Private Helper - Front Most ViewController
