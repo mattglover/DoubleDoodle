@@ -66,7 +66,7 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
 #pragma mark - View Lifecycle
 - (void)viewDidLoad {
   [super viewDidLoad];
-
+  
   self.title = NSLocalizedString(@"Double Doodle", nil);
   self.view.tintColor = [UIColor blackColor];
   
@@ -186,7 +186,7 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
 
 #pragma mark - Update UI
 - (void)updateWithXMLData:(NSData *)xmlData {
-
+  
   [self.activityIndicator startAnimating];
   
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
@@ -202,9 +202,12 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
         [self.firstDoodleViewController  updateWithDoodleViewConfiguration:self.doodleViewConfigurations[0]];
         [self.secondDoodleViewController updateWithDoodleViewConfiguration:self.doodleViewConfigurations[1]];
         [self.swapViewsButton updateWithFirstColor:[self.firstDoodleViewController representativeDoodleViewColor]
-                                       secondColor:[self.secondDoodleViewController representativeDoodleViewColor]];
+                                       secondColor:[self.secondDoodleViewController representativeDoodleViewColor]
+                                 animationDuration:DDDDoodleContainerViewControllerDefaultAnimationDuration];
         [self.sideBySidePanelViewButton updateWithFirstColor:[self.firstDoodleViewController representativeDoodleViewColor]
-                                                 secondColor:[self.secondDoodleViewController representativeDoodleViewColor]];
+                                                 secondColor:[self.secondDoodleViewController representativeDoodleViewColor]
+                                           animtaionDuration:DDDDoodleContainerViewControllerDefaultAnimationDuration
+         ];
       }
     });
   });
@@ -232,7 +235,7 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
 #pragma mark - RotatingDiscView Delegate
 - (void)didSelectRotatingDiscView:(RotatingTwoColorDiscView *)view {
   if([self canRespondToUserButtonTaps]) {
-     [self swapViews:view];
+    [self swapViews:view];
   }
 }
 
@@ -291,9 +294,9 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
                    animated:YES
                  completion:^(BOOL finished) {
                    
-      [self presentSaveDoodleImageButtonAnimated:YES];
-      self.transitionInProgress = NO;
-    }];
+                   [self presentSaveDoodleImageButtonAnimated:YES];
+                   self.transitionInProgress = NO;
+                 }];
   }
 }
 
@@ -374,8 +377,8 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
                                                 completion:completion];
       break;
       
-      default:
-        self.transitionInProgress = NO;
+    default:
+      self.transitionInProgress = NO;
       break;
   }
 }
@@ -390,7 +393,7 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
 
 #pragma mark - Transition Controls (Enable)
 - (void)enableTransitionControls:(BOOL)enabled {
-
+  
   CGFloat alpha = enabled ? 1.0 : 0.1;
   
   [UIView animateWithDuration:DDDDoodleContainerViewControllerDefaultAnimationDuration
@@ -403,10 +406,10 @@ const NSInteger kNumberOfConfigurationsRequired = 2;
 #pragma mark - Invalid Configuration
 - (void)invalidDoodleViewConfiguration {
   [[[UIAlertView alloc] initWithTitle:@"Invalid XML Configuration"
-                             message:@"The XML specified is not correctly specified"
-                            delegate:nil
-                   cancelButtonTitle:@"OK"
-                   otherButtonTitles:nil] show];
+                              message:@"The XML specified is not correctly specified"
+                             delegate:nil
+                    cancelButtonTitle:@"OK"
+                    otherButtonTitles:nil] show];
 }
 
 #pragma mark - Private Helper - Front Most ViewController

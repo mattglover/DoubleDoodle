@@ -82,8 +82,11 @@ static CGFloat const kDiskRectInset = 10.0f; // allows for smaller disc whilst m
 }
 
 #pragma mark - UI Update
-- (void)updateWithFirstColor:(UIColor *)firstColor secondColor:(UIColor *)secondColor {
+- (void)updateWithFirstColor:(UIColor *)firstColor secondColor:(UIColor *)secondColor animationDuration:(NSTimeInterval)duration {
+  [CATransaction begin];
+  [CATransaction setAnimationDuration:duration];
   self.dualColorDisc.colors = @[ (id)firstColor.CGColor, (id)firstColor.CGColor, (id)secondColor.CGColor, (id)secondColor.CGColor ];
+  [CATransaction commit];
 }
 
 - (void)viewTapped:(UIGestureRecognizer *)sender {

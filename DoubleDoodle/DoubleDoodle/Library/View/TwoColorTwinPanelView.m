@@ -44,8 +44,11 @@ static CGFloat const kPanelRectInset = 10.0f; // allows for smaller disc whilst 
 }
 
 #pragma mark - UI Update
-- (void)updateWithFirstColor:(UIColor *)firstColor secondColor:(UIColor *)secondColor {
+- (void)updateWithFirstColor:(UIColor *)firstColor secondColor:(UIColor *)secondColor animtaionDuration:(NSTimeInterval)duration {
+  [CATransaction begin];
+  [CATransaction setAnimationDuration:duration];
   self.gradientLayer.colors = @[ (id)firstColor.CGColor, (id)firstColor.CGColor, (id)secondColor.CGColor, (id)secondColor.CGColor ];
+  [CATransaction commit];
 }
 
 #pragma mark - Gesture Recogniser

@@ -18,6 +18,6 @@
 @property (nonatomic, weak) id<TwoColorTwinPanelViewDelegate> delegate;
 
 - (id)initWithFrame:(CGRect)frame firstColor:(UIColor *)firstColor secondColor:(UIColor *)secondColor;
-- (void)updateWithFirstColor:(UIColor *)firstColor secondColor:(UIColor *)secondColor;
+- (void)updateWithFirstColor:(UIColor *)firstColor secondColor:(UIColor *)secondColor animtaionDuration:(NSTimeInterval)duration;
 
 @end
