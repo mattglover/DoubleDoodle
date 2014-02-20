@@ -32,17 +32,6 @@ static CGFloat const kDoodleViewLineWidth = 4.0f;
   return self;
 }
 
-#pragma mark - Memory Warning
-- (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning];
-  NSLog(@"%s", __FUNCTION__);
-}
-
-#pragma mark - View Lifecycle
-- (void)viewDidLoad {
-  [super viewDidLoad];
-}
-
 #pragma mark - Setup
 - (void)initDoodleViewWithBackgroundColor:(UIColor *)backgroundColor lineStrokeColor:(UIColor *)lineStrokeColor {
   
